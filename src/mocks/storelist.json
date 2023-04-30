@@ -1,0 +1,174 @@
+{
+    "code": 2000,
+    "message": "api.common.ok",
+    "result": {
+        "count": 13837,
+        "rows": [
+            {
+                "_id": 1,
+                "name": "(주)남우조경",
+                "number": "787281080",
+                "category": "화원",
+                "phone": "0614347550",
+                "address": "전남 강진군 강진읍 구강포로 22",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 2,
+                "name": "가호수가죽공방",
+                "number": "786562281",
+                "category": "문화취미기타",
+                "phone": "0614335624",
+                "address": "전남 강진군 강진읍 남문길 17",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 3,
+                "name": "꽃길",
+                "number": "707170013",
+                "category": "화원",
+                "phone": "0614337880",
+                "address": "전남 강진군 강진읍 남문길 6 ,1층",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 4,
+                "name": "주식회사 토키토키",
+                "number": "711694069",
+                "category": "기타교육",
+                "phone": "07042520947",
+                "address": "전남 강진군 강진읍 남문길 6-1 ",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 5,
+                "name": "토키토키어학원",
+                "number": "705871322",
+                "category": "외국어학원",
+                "phone": "07042520947",
+                "address": "전남 강진군 강진읍 남문길 6-1 ,2층",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 6,
+                "name": "한겨레학원",
+                "number": "731729303",
+                "category": "외국어학원",
+                "phone": "0614339077",
+                "address": "전남 강진군 강진읍 남성 184",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 7,
+                "name": "강진모란화원",
+                "number": "734967025",
+                "category": "화원",
+                "phone": "0614333698",
+                "address": "전남 강진군 강진읍 남성리 163-5",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 8,
+                "name": "보금모텔",
+                "number": "747088538",
+                "category": "기타숙박업",
+                "phone": "0614334765",
+                "address": "전남 강진군 강진읍 남성리 163-5번지",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 9,
+                "name": "강진고을신문",
+                "number": "772502008",
+                "category": "정기간행물",
+                "phone": "0614333400",
+                "address": "전남 강진군 강진읍 남성리 23-25",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 10,
+                "name": "홍인디자인",
+                "number": "774444908",
+                "category": "출판인쇄물",
+                "phone": "0622220091",
+                "address": "전남 강진군 강진읍 남성리 24-17",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 11,
+                "name": "강진AMF볼링센타",
+                "number": "735942256",
+                "category": "볼링장",
+                "phone": "0614332441",
+                "address": "전남 강진군 강진읍 남성리 24-4번지",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 12,
+                "name": "강진꽃백화점",
+                "number": "725782010",
+                "category": "화원",
+                "phone": "0614335566",
+                "address": "전남 강진군 강진읍 남성리 39-7",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 13,
+                "name": "모두모텔",
+                "number": "727601861",
+                "category": "기타숙박업",
+                "phone": "0614338775",
+                "address": "전남 강진군 강진읍 남성리 40-1",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 14,
+                "name": "종이나라",
+                "number": "721955375",
+                "category": "문구용품",
+                "phone": "061332656",
+                "address": "전남 강진군 강진읍 남성리 46-21번지",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            },
+            {
+                "_id": 15,
+                "name": "탑모텔",
+                "number": "766008356",
+                "category": "기타숙박업",
+                "phone": "0614348816",
+                "address": "전남 강진군 강진읍 남성리 50-26",
+                "deleted_at": null,
+                "updated_at": null,
+                "created_at": "2023-04-21T15:29:59.000Z"
+            }
+        ]
+    }
+}

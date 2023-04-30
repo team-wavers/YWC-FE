@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Pretendard", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("./Pretendard-Regular.woff2") format(woff2);
+}
+
+@font-face {
+    font-family: "Pretendard", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src: url("./Pretendard-Medium.woff2") format(woff2);
+}
+
+@font-face {
+    font-family: "Pretendard", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url("./Pretendard-SemiBold.woff2") format(woff2);
+}
+
+@font-face {
+    font-family: "Pretendard", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("./Pretendard-Bold.woff2") format(woff2);
+}
+
+@font-face {
+    font-family: "OAGothic";
+    src: url("./OAGothic-ExtraBold.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "OAGothic";
+    src: url("./OAGothic-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
