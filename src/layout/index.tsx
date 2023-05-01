@@ -11,7 +11,7 @@ const index = ({ children }: layoutPropsType) => {
     return (
         <Container>
             <Header />
-            {children}
+            <Main>{children}</Main>
             <Footer />
         </Container>
     );
@@ -22,9 +22,15 @@ const Container = styled.div`
     width: min(480px, 100%);
     min-height: 100vh;
     margin: 0 auto;
-    background-color: #cbd1d7;
+    background-color: ${({ theme }) => theme.bg};
     color: ${({ theme }) => theme.black}
     font-size: ${({ theme }) => theme.l};
+`;
+
+const Main = styled.main`
+    width: 100%;
+    height: auto;
+    background-color: ${({ theme }) => theme.bg};
 `;
 
 export default index;
