@@ -21,6 +21,7 @@ const index = () => {
 
     const currentPage = params.get("page");
     const searchQuery = params.get("q");
+    const size = "15";
 
     const searchHandler = (value: string) => {
         setParams(
@@ -32,7 +33,7 @@ const index = () => {
     useEffect(() => {
         if (currentPage && searchQuery) {
             setLoading(true);
-            getStoreList(searchQuery, currentPage)
+            getStoreList(searchQuery, currentPage, size)
                 .then((res) => {
                     if (res.code === 2000) {
                         setStoreList(res.result.rows);

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-/_
-/node_modules
-/build
-=======
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -34,4 +29,3 @@ yarn-error.log*
 .env
 .env.development
 .env.production
->>>>>>> ab5567803b1b9894e8ff0442a737cc8816a034df
