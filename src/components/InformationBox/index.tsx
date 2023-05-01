@@ -94,39 +94,39 @@ const PlaceGridContainer = styled.div`
 const PlaceGrid = styled.table`
     width: 100%;
     height: auto;
-    border: 1px solid ${({ theme }) => theme.black};
-    background-color: ${({ theme }) => theme.white};
 `;
 
 const PlaceTypeHead = styled.th`
     width: 30%;
-    height: 30px;
-    border: 1px solid ${({ theme }) => theme.black};
+    height: 40px;
     font-size: ${({ theme }) => theme.m};
     background-color: ${({ theme }) => theme.pageBtnActive};
+    vertical-align: middle;
+    border: 1px solid ${({ theme }) => theme.black};
 `;
 
 const PlaceNameHead = styled.th`
     width: 70%;
     height: 30px;
-    border: 1px solid ${({ theme }) => theme.black};
     font-size: ${({ theme }) => theme.m};
     background-color: ${({ theme }) => theme.pageBtnActive};
+    vertical-align: middle;
+    border: 1px solid ${({ theme }) => theme.black};
 `;
 
 const PlaceType = styled.td`
     font-size ${({ theme }) => theme.m}; 
     font-weight: 500;
-    border: 1px solid ${({ theme }) => theme.black};
     vertical-align: middle;
+    border: 1px solid ${({ theme }) => theme.black};
 `;
 
 const PlaceName = styled.td`
     font-size ${({ theme }) => theme.m}; 
     font-weight: 500;
-    border: 1px solid ${({ theme }) => theme.black};
     text-align: left;
     padding: 10px;
+    border: 1px solid ${({ theme }) => theme.black};
 `;
 
 export default index;

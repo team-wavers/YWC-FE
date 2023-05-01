@@ -23,7 +23,7 @@ const Container = styled.header`
 `;
 
 const Title = styled.h1`
-    font-size: ${({ theme }) => theme.l};
+    font-size: ${({ theme }) => theme.xl};
     font-family: "OAGothic";
     font-weight: 800;
     line-height: ${({ theme }) => theme.x2l};
