@@ -17,7 +17,7 @@ const index = ({
             onChange={onChange}
             onKeyPress={onKeyPress}
             defaultValue={defaultValue}
-            placeholder="검색어를 입력하세요! (ex: 용용분식)"
+            placeholder="검색어를 입력하세요! (ex: 순천대학생백화점)"
         />
     );
 };

@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const index = () => {
     return (
         <FooterContainer>
             <Text>
-                Feedback:{" "}
+                {/* Feedback:{" "}
                 <Link
                     to="#"
                     style={{ color: "#ff3399", fontSize: "inherit" }}
@@ -16,7 +16,7 @@ const index = () => {
                     }}
                 >
                     support@youthwelfare.kr
-                </Link>
+                </Link> */}
             </Text>
             <Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
         </FooterContainer>
