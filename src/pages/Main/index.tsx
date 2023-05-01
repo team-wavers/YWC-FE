@@ -21,7 +21,7 @@ const index = () => {
 
     const currentPage = params.get("page");
     const searchQuery = params.get("q");
-    const size = "15";
+    const size = "5";
 
     const searchHandler = (value: string) => {
         setParams(
@@ -104,7 +104,9 @@ const index = () => {
             ) : (
                 <NoResultContainer>검색 결과가 없습니다.</NoResultContainer>
             )}
-            {count > 15 && <Pagination total={count} limit={15} maxPage={5} />}
+            {count > 15 && (
+                <Pagination total={count} limit={Number(size)} maxPage={5} />
+            )}
         </>
     );
 };
