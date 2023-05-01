@@ -9,7 +9,7 @@ type SearchButtonPropType = {
 const index = ({ onClick }: SearchButtonPropType) => {
     return (
         <SearchButton onClick={onClick}>
-            <SearchIcon width="24" fill="#BBB" />
+            <SearchIcon width="24" fill="#fff" />
         </SearchButton>
     );
 };
@@ -19,11 +19,10 @@ const SearchButton = styled.button`
     justify-content: center;
     align-items: center;
     width: 80px;
-    height: 40px;
+    height: 50px;
     border: none;
-    border-radius: 10px;
-    margin-right: 10px;
     outline: none;
+    background-color: ${({ theme }) => theme.pageBtnActive};
 `;
 
 export default index;

@@ -16,6 +16,7 @@ const colors: colorType = {
     placeholder: "#AFAFAF",
     pageBtn: "#93A8BB",
     pageBtnActive: "#6BABE7",
+    bg: "#f1f2f4",
 };
 
 const fontSizes: fontSizeType = {

@@ -119,6 +119,7 @@ const SearchContainer = styled.section`
     width: 100%;
     height: 50px;
     background-color: ${({ theme }) => theme.white};
+    box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.1);
 `;
 
 const ListViewContainer = styled.section`

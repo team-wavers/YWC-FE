@@ -5,12 +5,6 @@ import styled from "styled-components";
 const index = () => {
     return (
         <Container>
-            <Title>
-                전남청년 문화복지카드 사용처를
-                <br />
-                쉽게 검색 해 보세요!
-            </Title>
-
             <PlaceGridContainer>
                 <SubTitle>&#127978; 분류별 사용처</SubTitle>
                 <PlaceGrid>
@@ -72,28 +66,12 @@ const Container = styled.section`
     width: 100%;
     min-height: 100px;
     text-align: center;
-    font-family: "OAGothic";
+    font-family: "OAGothic", sans-serif;
     padding: 20px;
     padding-top: 0;
     font-size: ${({ theme }) => theme.l};
     line-height: ${({ theme }) => theme.xl};
     color: ${({ theme }) => theme.black};
-`;
-
-const Title = styled.h2`
-    width: calc(100% + 40px);
-    padding: 40px 0;
-    background: rgb(146, 150, 154);
-    background: linear-gradient(
-        180deg,
-        rgba(146, 150, 154, 0.5) 0%,
-        rgba(203, 209, 215, 0) 100%
-    );
-    font-family: "OAGothic", sans-serif;
-    font-size: ${({ theme }) => theme.l};
-    line-height: ${({ theme }) => theme.xl};
-    color: ${({ theme }) => theme.white};
-    text-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
 `;
 
 const SubTitle = styled.h3`
@@ -110,6 +88,7 @@ const SubTitle = styled.h3`
 const PlaceGridContainer = styled.div`
     width: 100%;
     height: auto;
+    padding-top: 30px;
 `;
 
 const PlaceGrid = styled.table`
@@ -124,7 +103,7 @@ const PlaceTypeHead = styled.th`
     height: 30px;
     border: 1px solid ${({ theme }) => theme.black};
     font-size: ${({ theme }) => theme.m};
-    background-color: ${({ theme }) => theme.pageBtn};
+    background-color: ${({ theme }) => theme.pageBtnActive};
 `;
 
 const PlaceNameHead = styled.th`
@@ -132,7 +111,7 @@ const PlaceNameHead = styled.th`
     height: 30px;
     border: 1px solid ${({ theme }) => theme.black};
     font-size: ${({ theme }) => theme.m};
-    background-color: ${({ theme }) => theme.pageBtn};
+    background-color: ${({ theme }) => theme.pageBtnActive};
 `;
 
 const PlaceType = styled.td`
