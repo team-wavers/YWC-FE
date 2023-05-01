@@ -24,8 +24,6 @@ yarn-error.log*
 
 /_
 
-/src/components/_Pagination
-
 .env
 .env.development
 .env.production
