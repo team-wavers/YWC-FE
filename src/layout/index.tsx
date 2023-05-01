@@ -4,17 +4,17 @@ import Header from "../components/Header"; // 추후에 수정
 import Footer from "../components/Footer";
 
 type layoutPropsType = {
-    children: React.ReactNode;
+	children: React.ReactNode;
 };
 
 const index = ({ children }: layoutPropsType) => {
-    return (
-        <Container>
-            <Header />
-            {children}
-            <Footer />
-        </Container>
-    );
+	return (
+		<Container>
+			<Header />
+			<Main>{children}</Main>
+			<Footer />
+		</Container>
+	);
 };
 
 const Container = styled.div`
@@ -25,6 +25,11 @@ const Container = styled.div`
     background-color: #cbd1d7;
     color: ${({ theme }) => theme.black}
     font-size: ${({ theme }) => theme.l};
+`;
+
+const Main = styled.main`
+	width: 100%;
+	height: auto;
 `;
 
 export default index;
