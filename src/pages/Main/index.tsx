@@ -21,6 +21,7 @@ const index = () => {
 
     const currentPage = params.get("page");
     const searchQuery = params.get("q");
+    const size = "5";
 
     const searchHandler = (value: string) => {
         setParams(
@@ -32,7 +33,7 @@ const index = () => {
     useEffect(() => {
         if (currentPage && searchQuery) {
             setLoading(true);
-            getStoreList(searchQuery, currentPage)
+            getStoreList(searchQuery, currentPage, size)
                 .then((res) => {
                     if (res.code === 2000) {
                         setStoreList(res.result.rows);
@@ -103,7 +104,9 @@ const index = () => {
             ) : (
                 <NoResultContainer>검색 결과가 없습니다.</NoResultContainer>
             )}
-            {count > 15 && <Pagination total={count} limit={15} maxPage={5} />}
+            {count > 15 && (
+                <Pagination total={count} limit={Number(size)} maxPage={5} />
+            )}
         </>
     );
 };
@@ -116,6 +119,7 @@ const SearchContainer = styled.section`
     width: 100%;
     height: 50px;
     background-color: ${({ theme }) => theme.white};
+    box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.1);
 `;
 
 const ListViewContainer = styled.section`
