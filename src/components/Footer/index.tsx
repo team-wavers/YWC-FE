@@ -7,9 +7,10 @@ const index = () => {
 		<FooterContainer>
 			<Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
 			<Text>
-				Contact:
+				Contact:{" "}
 				<Link
 					to="#"
+					style={{ fontSize: "1.25rem", color: "#93A8BB" }}
 					onClick={(e) => {
 						window.location.href = "mailto:support@youthwelfare.kr";
 						e.preventDefault();

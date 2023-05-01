@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background-color: #cbd1d7;
+        font-size: 62.5%;
     }
 
     &:link, &:visited {
