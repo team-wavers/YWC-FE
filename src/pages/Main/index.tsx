@@ -104,7 +104,7 @@ const index = () => {
             ) : (
                 <NoResultContainer>검색 결과가 없습니다.</NoResultContainer>
             )}
-            {count > 15 && (
+            {count > Number(size) && (
                 <Pagination total={count} limit={Number(size)} maxPage={5} />
             )}
         </>
