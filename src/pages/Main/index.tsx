@@ -46,7 +46,10 @@ const index = () => {
                         console.error("Error Message: ", res.message);
                     }
                 })
-                .catch((e) => console.log(e));
+                .catch((e) => {
+                    setLoading(false);
+                    console.log(e);
+                });
         }
     }, [searchQuery, currentPage]);
 
