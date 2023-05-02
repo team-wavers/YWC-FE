@@ -1,24 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const index = () => {
     return (
         <FooterContainer>
-            <Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
             <Text>
-                Contact:{" "}
+                {/* Feedback:{" "}
                 <Link
                     to="#"
-                    style={{ color: "inherit", fontSize: "inherit" }}
+                    style={{ color: "#ff3399", fontSize: "inherit" }}
                     onClick={(e) => {
                         window.location.href = "mailto:support@youthwelfare.kr";
                         e.preventDefault();
                     }}
                 >
                     support@youthwelfare.kr
-                </Link>
+                </Link> */}
             </Text>
+            <Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
         </FooterContainer>
     );
 };
