@@ -6,7 +6,7 @@ const index = () => {
     return (
         <>
             <FeedbackContainer>
-                <FeedbackTitle>여러분의 피드백을 원해요! 👇👇👇</FeedbackTitle>
+                <FeedbackTitle>여러분의 피드백이 필요해요! 👇</FeedbackTitle>
                 <FeedbackSubTitle>
                     원하는 기능, 잘못된 정보, 개선 사항 등의 피드백이
                     <br />
@@ -41,6 +41,7 @@ const FeedbackContainer = styled.div`
 `;
 
 const FeedbackTitle = styled.h3`
+    width: 100%;
     font-size: ${({ theme }) => theme.l};
     margin-bottom: 5px;
 `;
