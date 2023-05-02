@@ -81,7 +81,7 @@ const SubTitle = styled.h3`
 const TableContainer = styled.div`
     width: 100%;
     height: auto;
-    padding-top: 10px;
+    margin-top: 10px;
     margin-bottom: 15px;
     border-radius: 20px;
     box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.2);
