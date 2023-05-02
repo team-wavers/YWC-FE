@@ -5,7 +5,7 @@ const index = () => {
     return (
         <>
             <Container>
-                <SubTitle>&#127978; 분류별 사용처</SubTitle>
+                <SubTitle>&#128450;&#65039; 분류별 사용처</SubTitle>
                 <TableContainer>
                     <TableHeaderContainer>
                         <TableHeaderCell>분류</TableHeaderCell>
@@ -48,6 +48,14 @@ const index = () => {
                         </TableBodyCell>
                     </TableBodyContainer>
                 </TableContainer>
+                <Note>
+                    ※ 온라인(인터넷, 앱 등) 결제 불가, 전남 도내(오프라인)에서만
+                    사용 가능
+                </Note>
+                <Note>
+                    ※ 사용 업종이 제대로 등록되지 않은 경우 카드 사용이 불가 할
+                    수 있음
+                </Note>
             </Container>
         </>
     );
@@ -74,8 +82,9 @@ const TableContainer = styled.div`
     width: 100%;
     height: auto;
     padding-top: 10px;
+    margin-bottom: 15px;
     border-radius: 20px;
-    box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 10px -5px rgba(0, 0, 0, 0.2);
 `;
 
 const TableHeaderContainer = styled.div`
@@ -115,6 +124,13 @@ const TableBodyCell = styled.div`
         text-align: left;
         width: 70%;
     }
+`;
+
+const Note = styled.p`
+    color: ${({ theme }) => theme.pageBtn};
+    font-size: ${({ theme }) => theme.xs};
+    line-height: ${({ theme }) => theme.m};
+    text-align: left;
 `;
 
 export default index;
