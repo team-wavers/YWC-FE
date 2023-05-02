@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        background-color: #cbd1d7;
+        background-color: #f1f2f4;
     }
 
     &:link, &:visited {
