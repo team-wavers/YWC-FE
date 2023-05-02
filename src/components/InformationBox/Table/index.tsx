@@ -68,7 +68,7 @@ const Container = styled.div`
 `;
 
 const SubTitle = styled.h3`
-    width: 160px;
+    width: auto;
     height: 45px;
     padding: 10px 0;
     padding-bottom: 0;
