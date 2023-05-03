@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Feedback from "./Feedback";
 import Table from "./Table";
+import Advertisement from "../Advertisement";
 
 const index = () => {
     return (
         <Container>
+            <Advertisement />
             <Table />
             <Feedback />
         </Container>

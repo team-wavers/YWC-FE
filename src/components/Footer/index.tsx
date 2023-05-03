@@ -1,11 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Advertisement from "../Advertisement";
 
 const index = () => {
     return (
         <FooterContainer>
-            <Advertisement />
             <Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
         </FooterContainer>
     );

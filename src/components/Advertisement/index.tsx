@@ -9,7 +9,7 @@ const Container = styled.div`
     width: 320px;
     height: 100px;
     background-color: ${({ theme }) => theme.pageBtn};
-    margin-bottom: 20px;
+    margin: 20px 0;
     opacity: 0.1;
 `;
 
