@@ -64,6 +64,7 @@ const index = () => {
 const Container = styled.div`
     width: 100%;
     height: auto;
+    padding-top: 20px;
 `;
 
 const SubTitle = styled.h3`

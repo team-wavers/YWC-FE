@@ -6,10 +6,9 @@ const index = () => {
 };
 
 const Container = styled.div`
-    width: 320px;
+    width: calc(100% + 40px);
     height: 100px;
     background-color: ${({ theme }) => theme.pageBtn};
-    margin: 20px 0;
     opacity: 0.1;
 `;
 
