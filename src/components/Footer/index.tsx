@@ -1,23 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
+import Advertisement from "../Advertisement";
 
 const index = () => {
     return (
         <FooterContainer>
-            <Text>
-                {/* Feedback:{" "}
-                <Link
-                    to="#"
-                    style={{ color: "#ff3399", fontSize: "inherit" }}
-                    onClick={(e) => {
-                        window.location.href = "mailto:support@youthwelfare.kr";
-                        e.preventDefault();
-                    }}
-                >
-                    support@youthwelfare.kr
-                </Link> */}
-            </Text>
+            <Advertisement />
             <Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
         </FooterContainer>
     );
@@ -25,7 +13,8 @@ const index = () => {
 
 const FooterContainer = styled.footer`
     width: 100%;
-    height: 70px;
+    min-height: 70px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
