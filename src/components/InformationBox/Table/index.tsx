@@ -64,14 +64,12 @@ const index = () => {
 const Container = styled.div`
     width: 100%;
     height: auto;
-    padding-top: 30px;
+    padding-top: 20px;
 `;
 
 const SubTitle = styled.h3`
     width: auto;
     height: 45px;
-    padding: 10px 0;
-    padding-bottom: 0;
     text-align: left;
     font-family: "OAGothic", sans-serif;
     font-weight: 500;
