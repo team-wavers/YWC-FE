@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { pathType } from "@_types/path";
 import Main from "./pages/Main"; // 추후에 수정
 import NotFound from "./pages/NotFound";
+import Map from "./pages/Map";
 import { GlobalStyle } from "./styles/GlobalStyles"; // 추후에 수정
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
@@ -15,8 +16,8 @@ const Router = () => {
         <BrowserRouter>
             <ThemeProvider theme={theme}>
                 <GlobalStyle />
-                <Layout>
-                    <Routes>
+                <Routes>
+                    <Route element={<Layout />}>
                         {pathList.map(({ path, element }) => {
                             return (
                                 <Route
@@ -27,8 +28,9 @@ const Router = () => {
                             );
                         })}
                         <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </Layout>
+                    </Route>
+                    <Route path="/map" element={<Map />} />
+                </Routes>
             </ThemeProvider>
         </BrowserRouter>
     );
