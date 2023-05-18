@@ -11,4 +11,17 @@ const getStoreList = async (
         .catch((e) => console.log(e));
 };
 
-export { getStoreList };
+const getStoreListByCoords = async (
+    latitude: number | null,
+    longitude: number | null,
+    distance: number | null,
+) => {
+    return await instance()
+        .get(
+            `v1/stores/nearby?latitude=${latitude}&longitude=${longitude}&distance=${distance}`,
+        )
+        .then((res) => res.data)
+        .catch((e) => console.log(e));
+};
+
+export { getStoreList, getStoreListByCoords };
