@@ -37,8 +37,7 @@ const index = ({ name, category, address, onCloseEvent }: PIPropsType) => {
 };
 
 const Container = styled.div`
-    position: absolute;
-    bottom: 0;
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;

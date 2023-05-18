@@ -6,7 +6,8 @@ import { Container as MapDiv } from "react-naver-maps";
 import Loading from "../../components/Loading";
 import { getStoreListByCoords } from "../../apis/store";
 import { IStores } from "../../types/store";
-import useDebounce from "../../hooks/useDebounce";
+import { ReactComponent as RefreshIcon } from "../../assets/icons/refresh-icon.svg";
+// import useDebounce from "../../hooks/useDebounce";
 
 type coordsType = {
     result: string | null;
@@ -22,12 +23,20 @@ const index = () => {
         lng: 0,
     });
     const [storeList, setStoreList] = useState<IStores>([]);
-    const [distance, setDistance] = useState(500);
-    const dValue = useDebounce(coords, 250);
+    const [distance, setDistance] = useState(300);
+    const [isChanged, setIsChanged] = useState(false);
+    const [tempCoords, setTempCoords] = useState<coordsType>({
+        result: null,
+        lat: 0,
+        lng: 0,
+    });
 
     useEffect(() => {
         setLoading(true);
         if (window.navigator.geolocation) {
+            alert(
+                "지도 사용을 위해선 위치 수집 권한이 필요합니다. 다음에 표시되는 위치 권한 알림창에 [허용]을 눌러주세요!",
+            );
             window.navigator.geolocation.getCurrentPosition(
                 (c) => {
                     setCoords({
@@ -54,13 +63,13 @@ const index = () => {
     }, []);
 
     useEffect(() => {
-        if (dValue.lat <= 0 || dValue.lng <= 0) return;
-        getStoreListByCoords(dValue.lat, dValue.lng, distance)
+        if (coords.lat <= 0 || coords.lng <= 0) return;
+        getStoreListByCoords(coords.lat, coords.lng, distance)
             .then((res) => {
                 setStoreList(res.result.rows);
             })
             .catch((e) => console.log(e));
-    }, [dValue]);
+    }, [coords]);
 
     useEffect(() => {
         const vh = window.innerHeight * 0.01;
@@ -72,20 +81,28 @@ const index = () => {
         });
     });
 
+    const refreshHandler = () => {
+        setCoords(tempCoords);
+        setIsChanged(false);
+    };
+
     const centerChangeHandler = (e: naver.maps.Coord) => {
-        setCoords({ result: "success", lat: e.y, lng: e.x });
+        if (e.y !== coords.lat && e.x !== coords.lng) {
+            setIsChanged(true);
+            setTempCoords({ result: "success", lat: e.y, lng: e.x });
+        }
     };
 
     const zoomChangeHandler = (e: number) => {
         switch (e) {
             case 17:
-                setDistance(500);
-                return;
-            case 18:
                 setDistance(300);
                 return;
+            case 18:
+                setDistance(150);
+                return;
             case 19:
-                setDistance(100);
+                setDistance(75);
                 return;
             case 20:
                 setDistance(50);
@@ -115,6 +132,16 @@ const index = () => {
                             centerChangeHandler(e)
                         }
                         onZoomChanged={(e: number) => zoomChangeHandler(e)}
+                        refresh={
+                            isChanged ? (
+                                <RefreshButton onClick={() => refreshHandler()}>
+                                    <RefreshIcon width={24} />{" "}
+                                    <span>현 위치에서 검색</span>
+                                </RefreshButton>
+                            ) : (
+                                <></>
+                            )
+                        }
                     />
                 </MapDiv>
             </Container>
@@ -133,6 +160,24 @@ const Container = styled.div`
     font-size: ${({ theme }) => theme.l};
     z-index: 9999;
     overflow: hidden;
+`;
+
+const RefreshButton = styled.button`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 150px;
+    height: 50px;
+    background-color: ${({ theme }) => theme.pageBtnActive};
+    border: none;
+    border-radius: 50px;
+    outline: none;
+    color: ${({ theme }) => theme.white};
+    font-weight: 700;
+    font-size: ${({ theme }) => theme.l};
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.15);
 `;
 
 export default index;
