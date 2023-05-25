@@ -127,7 +127,7 @@ const index = () => {
                 >
                     <MapContainer
                         coord={{ lat: coords.lat, lng: coords.lng }}
-                        marker={storeList}
+                        markers={storeList}
                         onCenterChanged={(e: naver.maps.Coord) =>
                             centerChangeHandler(e)
                         }
@@ -135,7 +135,7 @@ const index = () => {
                         refresh={
                             isChanged ? (
                                 <RefreshButton onClick={() => refreshHandler()}>
-                                    <RefreshIcon width={24} />{" "}
+                                    <RefreshIcon width={24} />
                                     <span>현 위치에서 검색</span>
                                 </RefreshButton>
                             ) : (
@@ -168,8 +168,9 @@ const RefreshButton = styled.button`
     justify-content: center;
     align-items: center;
     gap: 10px;
-    width: 150px;
+    min-width: 150px;
     height: 50px;
+    padding: 0 10px;
     background-color: ${({ theme }) => theme.pageBtnActive};
     border: none;
     border-radius: 50px;
@@ -177,7 +178,7 @@ const RefreshButton = styled.button`
     color: ${({ theme }) => theme.white};
     font-weight: 700;
     font-size: ${({ theme }) => theme.l};
-    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 2px 10px -2px ${({ theme }) => theme.pageBtnActive};
 `;
 
 export default index;

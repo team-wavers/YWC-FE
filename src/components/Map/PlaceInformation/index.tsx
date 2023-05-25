@@ -9,6 +9,7 @@ type PIPropsType = {
     category: string | null;
     address: string | null;
     onCloseEvent: () => void;
+    visible?: `visible` | `hidden`;
 };
 
 const index = ({ name, category, address, onCloseEvent }: PIPropsType) => {
@@ -44,7 +45,6 @@ const Container = styled.div`
     width: calc(100% - 20px);
     min-height: 100px;
     font-size: ${({ theme }) => theme.l};
-    margin: 10px;
     padding: 15px 20px;
     list-style: none;
     background-color: ${({ theme }) => theme.white};
