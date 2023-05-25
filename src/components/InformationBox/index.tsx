@@ -2,12 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import Feedback from "./Feedback";
 import Table from "./Table";
-import Advertisement from "../Advertisement";
+import { ReactComponent as MapIcon } from "../../assets/icons/map-search-icon.svg";
+import { Link } from "react-router-dom";
+// import Advertisement from "../Advertisement";
 
 const index = () => {
     return (
         <Container>
-            <Advertisement />
+            <Link to={"/map"} style={{ width: "auto" }}>
+                <MapButton>
+                    <MapIcon />
+                    <span>지도로 보기</span>
+                </MapButton>
+            </Link>
             <Table />
             <Feedback />
         </Container>
@@ -26,6 +33,25 @@ const Container = styled.section`
     padding-top: 0;
     font-size: ${({ theme }) => theme.l};
     line-height: ${({ theme }) => theme.xl};
+    color: ${({ theme }) => theme.black};
+`;
+
+const MapButton = styled.button`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 300px;
+    height: 70px;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: ${({ theme }) => theme.xl};
+    font-weight: 600;
     color: ${({ theme }) => theme.black};
 `;
 
