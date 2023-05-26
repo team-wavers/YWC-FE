@@ -23,7 +23,7 @@ const index = ({
 };
 
 const Input = styled.input`
-    width: min(300px, 100%);
+    width: 100%;
     height: 50px;
     border: none;
     outline: none;

@@ -107,8 +107,10 @@ const index = () => {
             ) : (
                 <NoResultContainer>검색 결과가 없습니다.</NoResultContainer>
             )}
-            {count > Number(size) && (
+            {count > Number(size) && !loading ? (
                 <Pagination total={count} limit={Number(size)} maxPage={5} />
+            ) : (
+                <></>
             )}
         </>
     );

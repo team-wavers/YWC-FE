@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     html, body {
         margin: 0;
         width: 100%;
-        height: 100vh;
+        height: auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background-color: #f1f2f4;
