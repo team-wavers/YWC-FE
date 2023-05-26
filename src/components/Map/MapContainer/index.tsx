@@ -1,11 +1,5 @@
 import React, { Suspense, useEffect, useState } from "react";
-import {
-    Listener,
-    Marker,
-    NaverMap,
-    useMap,
-    useNavermaps,
-} from "react-naver-maps";
+import { Listener, Marker, NaverMap, useNavermaps } from "react-naver-maps";
 // import styled from "styled-components";
 import { IStores, IStore } from "../../../types/store";
 import PlaceInformation from "../PlaceInformation";
@@ -28,7 +22,6 @@ const index = ({
     refresh,
 }: MapContainerPropsType) => {
     const navermap = useNavermaps();
-    const mapElement = useMap();
     const [info, setInfo] = useState<IStore>({
         _id: 0,
         name: "",
