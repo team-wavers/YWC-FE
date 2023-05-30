@@ -1,20 +1,20 @@
 ![header](https://github.com/team-culfare/YWC-FE/blob/develop/public/thumbnail.png?raw=true)
 
-
 <a href = "https://youthwelfare.kr/"><img src="https://img.shields.io/badge/Project Website-blue?style=flat-square&logo=&logoColor=white"/></a>
 
 ### 🔎 서비스 개요
+
 전라남도 청년들에게 제공되는 문화복지카드 사용처를 쉽게 검색할 수 있는 웹 서비스 입니다.
 
 키워드로 가맹점을 검색할 수 있는 기능과 현 위치 중심으로 지도를 통해 가맹점을 검색할 수 있는 기능을 제공합니다.
 
-
 ### 📆 개발 기간
 
-- 1차 : 2023.4.20 ~ 2023.5.02
-- 2차 : 2023.5.02 ~ 2023.5.25
+-   1차 : 2023.4.20 ~ 2023.5.02
+-   2차 : 2023.5.02 ~ 2023.5.25
 
-###  👥 참여 개발자
+### 👥 참여 개발자
+
 <table>
     <tr>
         <td style="font-size: 18px; font-weight: 700" align="center" colspan="3">Front-end</td>
@@ -49,18 +49,20 @@
 
 ### 🗒️ 프로젝트 아카이브
 
-
-#### ✔ [<img src="https://img.shields.io/badge/Notion Here-white?style=flat&logo=notion&logoColor=black"/>](https://www.notion.so/Youth-Welfare-fa3fe1a7c5b446e8b1971128cf6d804d?pvs=4)
+[<img src="https://img.shields.io/badge/Notion-white?style=flat&logo=notion&logoColor=black"/>](https://www.notion.so/Youth-Welfare-fa3fe1a7c5b446e8b1971128cf6d804d?pvs=4)
 
 ### 🔧 기술 스택
 
 ##### Front-end
-[![Stacks](https://skills.thijs.gg/icons?i=ts,react&theme=light)](https://skills.thijs.gg) <img src="https://github.com/team-culfare/.resources/blob/main/styledcomponents.png?raw=true" width = "48"/>  <img src="https://github.com/team-culfare/.resources/blob/main/axios.png?raw=tru" width ="48"/>
+
+[![Stacks](https://skills.thijs.gg/icons?i=ts,react&theme=light)](https://skills.thijs.gg) <img src="https://github.com/team-culfare/.resources/blob/main/styledcomponents.png?raw=true" width = "48"/> <img src="https://github.com/team-culfare/.resources/blob/main/axios.png?raw=tru" width ="48"/>
+
 ##### Back-end
+
 [![Stacks](https://skills.thijs.gg/icons?i=nodejs&theme=light)](https://skills.thijs.gg)
 
 ### Contact
 
 support@youthwelfare.kr
 
-<img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fseondal&count_bg=%20202020&title_bg=%20202020&icon=checkmarx.svg&icon_color=%23F8F8F8&title=View&edge_flat=true)"/>
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fteam-culfare%2FYWC-FE&count_bg=%23000000&title_bg=%23000000&icon=tinder.svg&icon_color=%23E7E7E7&title=HITS&edge_flat=false)](https://hits.seeyoufarm.com)
