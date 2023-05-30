@@ -25,10 +25,15 @@
         <td><img src="https://github.com/team-culfare/.resources/blob/main/%EA%B0%95%ED%83%9C%EC%96%91.jpg?raw=true" width="150"/></td>
     </tr>
     <tr>
-        <td align="center" style="font-size: 14px; font-weight: 700">👑 조용원<a href = "https://github.com/nyongone"><img style="display: block; margin: 5px 0;" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
-        <td align="center" style="font-size: 14px; font-weight: 700">이혜인<a href = "https://github.com/HAECHAN66"><img style="display: block; margin: 5px 0;" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
-        <td align="center" style="font-size: 14px; font-weight: 700">강태양<a href = "https://github.com/zxcv2987"><img style="display: block; margin: 5px 0;" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
-    </td>
+        <td align="center" style="font-size: 14px; font-weight: 700">👑 조용원</td>
+        <td align="center" style="font-size: 14px; font-weight: 700">이혜인</td>
+        <td align="center" style="font-size: 14px; font-weight: 700">강태양</td>
+    </tr>
+    <tr>
+        <td align="center"><a style="display: block" href = "https://github.com/nyongone"><img style="display: block" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
+        <td align="center"><a href = "https://github.com/HAECHAN66"><img style="display: block" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
+        <td align="center"><a href = "https://github.com/zxcv2987"><img style="display: block" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
+    </tr>
 </table>
 
 <table>
@@ -41,10 +46,15 @@
         <td><img src="https://github.com/team-culfare/.resources/blob/main/%EC%A1%B0%ED%98%95%EA%B7%BC.jpeg?raw=true" width="150"/></td>
     </tr>
     <tr>
-        <td align="center" style="font-size: 14px; font-weight: 700">👑 홍은성<a href = "https://github.com/lightpurple"><img style="display: block; margin: 5px 0;" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
-        <td align="center" style="font-size: 14px; font-weight: 700">정다운<a href = "https://github.com/jdw611"><img style="display: block; margin: 5px 0;" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
-        <td align="center" style="font-size: 14px; font-weight: 700">조형근<a href = "https://github.com/woomae"><img style="display: block; margin: 5px 0;" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
-    </td>
+        <td align="center" style="font-size: 14px; font-weight: 700">👑 홍은성</td>
+        <td align="center" style="font-size: 14px; font-weight: 700">정다운</td>
+        <td align="center" style="font-size: 14px; font-weight: 700">조형근</td>
+    </tr>
+    <tr>
+        <td align="center"><a href="https://github.com/lightpurple"><img style="display: block" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
+        <td align="center"><a href="https://github.com/jdw611"><img style="display: block" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
+        <td align="center"><a href="https://github.com/woomae"><img style="display: block" src="https://img.shields.io/badge/Github-black?style=flat-square&logo=&logoColor=white"/></a></td>
+    </tr>
 </table>
 
 ### 🗒️ 프로젝트 아카이브
