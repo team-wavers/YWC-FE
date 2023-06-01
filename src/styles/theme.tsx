@@ -1,14 +1,7 @@
+import { DefaultTheme } from "styled-components";
 import pxtorem from "./utils/pxtorem";
 
-type colorType = {
-    [name: string]: string;
-};
-
-type fontSizeType = {
-    [name: string]: string;
-};
-
-const colors: colorType = {
+const colors = {
     black: "#222",
     white: "#fff",
     red: "#c0392b",
@@ -19,7 +12,7 @@ const colors: colorType = {
     bg: "#f1f2f4",
 };
 
-const fontSizes: fontSizeType = {
+const fontSizes = {
     x3l: pxtorem(96),
     x2l: pxtorem(60),
     xl: pxtorem(48),
@@ -31,9 +24,12 @@ const fontSizes: fontSizeType = {
     x3s: pxtorem(12),
 };
 
-const theme = {
-    ...colors,
-    ...fontSizes,
+const theme: DefaultTheme = {
+    colors: colors,
+    sizes: fontSizes,
 };
+
+export type colorType = typeof colors;
+export type fontSizeType = typeof fontSizes;
 
 export default theme;

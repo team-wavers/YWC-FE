@@ -7,7 +7,7 @@ type SearchInputPropsType = {
     defaultValue: string;
 };
 
-const index = ({
+const SearchInput = ({
     onChange,
     onKeyPress,
     defaultValue,
@@ -28,11 +28,11 @@ const Input = styled.input`
     border: none;
     outline: none;
     padding: 0 10px;
-    background-color: ${({ theme }) => theme.white};
-    font-size: ${({ theme }) => theme.m};
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: ${({ theme }) => theme.sizes.m};
     &::placeholder {
-        color: ${({ theme }) => theme.placeholder};
+        color: ${({ theme }) => theme.colors.placeholder};
     }
 `;
 
-export default index;
+export default SearchInput;

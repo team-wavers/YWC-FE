@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const index = () => {
+const Table = () => {
     return (
         <>
             <Container>
@@ -73,7 +73,7 @@ const SubTitle = styled.h3`
     text-align: left;
     font-family: "OAGothic", sans-serif;
     font-weight: 500;
-    font-size: ${({ theme }) => theme.l};
+    font-size: ${({ theme }) => theme.sizes.l};
 `;
 
 const TableContainer = styled.div`
@@ -87,7 +87,7 @@ const TableContainer = styled.div`
 
 const TableHeaderContainer = styled.div`
     display: flex;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.colors.white};
     border-radius: 20px 20px 0 0;
     padding: 5px 0;
     border-bottom: 1px solid #eee;
@@ -95,7 +95,7 @@ const TableHeaderContainer = styled.div`
 
 const TableHeaderCell = styled.div`
     width: 30%;
-    font-size: ${({ theme }) => theme.m};
+    font-size: ${({ theme }) => theme.sizes.m};
     font-weight: 600;
     &:last-child {
         width: 70%;
@@ -106,7 +106,7 @@ const TableBodyContainer = styled.div`
     display: flex;
     width: 100%;
     height: auto;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.colors.white};
     border-bottom: 1px solid #eee;
     &:last-child {
         border-radius: 0 0 20px 20px;
@@ -116,7 +116,7 @@ const TableBodyContainer = styled.div`
 
 const TableBodyCell = styled.div`
     width: 30%;
-    font-size: ${({ theme }) => theme.m};
+    font-size: ${({ theme }) => theme.sizes.m};
     padding: 10px 8px;
     &:nth-child(2n) {
         text-align: left;
@@ -125,10 +125,10 @@ const TableBodyCell = styled.div`
 `;
 
 const Note = styled.p`
-    color: ${({ theme }) => theme.pageBtn};
-    font-size: ${({ theme }) => theme.xs};
-    line-height: ${({ theme }) => theme.m};
+    color: ${({ theme }) => theme.colors.pageBtn};
+    font-size: ${({ theme }) => theme.sizes.xs};
+    line-height: ${({ theme }) => theme.sizes.m};
     text-align: left;
 `;
 
-export default index;
+export default Table;

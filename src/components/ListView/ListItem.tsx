@@ -1,23 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as MarkerIcon } from "../../../assets/icons/marker-icon.svg";
-import { ReactComponent as CategoryIcon } from "../../../assets/icons/category-icon.svg";
-import { ReactComponent as CloseIcon } from "../../../assets/icons/close-icon.svg";
+import { ReactComponent as MarkerIcon } from "../../assets/icons/marker-icon.svg";
+import { ReactComponent as CategoryIcon } from "../../assets/icons/category-icon.svg";
+import { IStore } from "@_types/store";
 
-type PIPropsType = {
-    name: string | null;
-    category: string | null;
-    address: string | null;
-    onCloseEvent: () => void;
-    visible?: `visible` | `hidden`;
-};
-
-const index = ({ name, category, address, onCloseEvent }: PIPropsType) => {
+const ListItem = ({ name, address, category }: IStore) => {
     return (
         <Container>
-            <CloseButton onClick={onCloseEvent}>
-                <CloseIcon width="22" />
-            </CloseButton>
             <StoreName>{name}</StoreName>
             <Metadata>
                 {address && (
@@ -36,41 +25,36 @@ const index = ({ name, category, address, onCloseEvent }: PIPropsType) => {
         </Container>
     );
 };
-
-const Container = styled.div`
-    position: relative;
+const Container = styled.li`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: calc(100% - 20px);
-    min-height: 100px;
-    font-size: ${({ theme }) => theme.l};
+    width: 100%;
+    min-height: 70px;
+    font-size: ${({ theme }) => theme.sizes.l};
     padding: 15px 20px;
     list-style: none;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.colors.white};
     border-radius: 15px;
-    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.15);
-`;
-
-const CloseButton = styled.button`
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    width: 30px;
-    height: 30px;
-    outline: none;
-    border: none;
-    background-color: transparent;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const StoreName = styled.h2`
-    width: 70%;
-    font-size: ${({ theme }) => theme.m};
+    width: auto;
+    font-size: ${({ theme }) => theme.sizes.m};
     font-family: "OAGothic";
     font-weight: 500;
     text-align: left;
     line-height: 20px;
 `;
+
+// const Divider = styled.hr`
+//     border: none;
+//     border-left: 1px solid #ececec;
+//     width: 1px;
+//     height: 100%;
+//     margin: 10px;
+// `;
 
 const Metadata = styled.div`
     display: flex;
@@ -89,10 +73,10 @@ const Address = styled.span`
     width: auto;
     float: right;
     gap: 7px;
-    font-size: ${({ theme }) => theme.s};
-    line-height: ${({ theme }) => theme.m};
+    font-size: ${({ theme }) => theme.sizes.s};
+    line-height: ${({ theme }) => theme.sizes.m};
 `;
 
 const Category = styled(Address)``;
 
-export default index;
+export default ListItem;

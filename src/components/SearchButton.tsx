@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as SearchIcon } from "../../assets/icons/search-icon.svg"; // 추후에 수정
+import { ReactComponent as SearchIcon } from "../assets/icons/search-icon.svg"; // 추후에 수정
 
 type SearchButtonPropType = {
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const index = ({ onClick }: SearchButtonPropType) => {
+const SearchButton = ({ onClick }: SearchButtonPropType) => {
     return (
-        <SearchButton onClick={onClick}>
+        <Button onClick={onClick}>
             <SearchIcon width="24" fill="#fff" />
-        </SearchButton>
+        </Button>
     );
 };
 
-const SearchButton = styled.button`
+const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ const SearchButton = styled.button`
     height: 50px;
     border: none;
     outline: none;
-    background-color: ${({ theme }) => theme.pageBtnActive};
+    background-color: ${({ theme }) => theme.colors.pageBtnActive};
 `;
 
-export default index;
+export default SearchButton;

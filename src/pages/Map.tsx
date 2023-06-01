@@ -1,40 +1,33 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import MapContainer from "../../components/Map/MapContainer";
+import MapContainer from "../components/Map/MapContainer";
 import { Container as MapDiv } from "react-naver-maps";
-import Loading from "../../components/Loading";
-import { getStoreListByCoords } from "../../apis/store";
-import { IStores } from "../../types/store";
-import getZoomDistance from "../../utils/zoomDistance";
-import { ReactComponent as RefreshIcon } from "../../assets/icons/refresh-icon.svg";
+import Loading from "../components/Loading";
+import { getStoreListByCoords } from "../apis/store";
+import { IStores } from "../types/store";
+import { coordType } from "../types/coord";
+import getZoomDistance from "../utils/zoomDistance";
+import { ReactComponent as RefreshIcon } from "../assets/icons/refresh-icon.svg";
+import { useNavigate } from "react-router-dom";
 
-type coordsType = {
-    result: string | null;
-    lat: number;
-    lng: number;
+type coordListType = {
+    coord: coordType;
+    clientCoord: coordType;
+    temp: coordType;
 };
 
-const index = () => {
-    const [coords, setCoords] = useState<coordsType>({
-        result: null,
-        lat: 0,
-        lng: 0,
-    });
-    const [curCoords, setCurCoords] = useState<coordsType>({
-        result: null,
-        lat: 0,
-        lng: 0,
-    });
-    const [tempCoords, setTempCoords] = useState<coordsType>({
-        result: null,
-        lat: 0,
-        lng: 0,
+const Map = () => {
+    const [coordList, setCoordList] = useState<coordListType>({
+        coord: { result: null, lat: 0, lng: 0 },
+        clientCoord: { result: null, lat: 0, lng: 0 },
+        temp: { result: null, lat: 0, lng: 0 },
     });
 
     const [loading, setLoading] = useState(false);
     const [storeList, setStoreList] = useState<IStores>([]);
     const [distance, setDistance] = useState(300);
     const [isChanged, setIsChanged] = useState(false);
+    const nav = useNavigate();
 
     useEffect(() => {
         setLoading(true);
@@ -44,25 +37,31 @@ const index = () => {
             );
             window.navigator.geolocation.getCurrentPosition(
                 (c) => {
-                    setCoords({
-                        ...coords,
-                        result: "success",
-                        lat: c.coords.latitude,
-                        lng: c.coords.longitude,
-                    });
-                    setCurCoords({
-                        result: "success",
-                        lat: c.coords.latitude,
-                        lng: c.coords.longitude,
+                    setCoordList({
+                        ...coordList,
+                        coord: {
+                            result: "success",
+                            lat: c.coords.latitude,
+                            lng: c.coords.longitude,
+                        },
+                        clientCoord: {
+                            result: "success",
+                            lat: c.coords.latitude,
+                            lng: c.coords.longitude,
+                        },
                     });
                     setLoading(false);
                 },
                 () => {
                     console.log("Error");
-                    setCoords({ ...coords, result: "error", lat: -1, lng: -1 });
+                    setCoordList({
+                        ...coordList,
+                        coord: { result: "error", lat: -1, lng: -1 },
+                    });
                     alert(
                         "위치를 받아오는 데 오류가 발생하였습니다. 위치 권한을 다시 확인 해 주세요.",
                     );
+                    nav("/");
                 },
             );
         } else {
@@ -73,13 +72,13 @@ const index = () => {
     }, []);
 
     useEffect(() => {
-        if (coords.lat <= 0 || coords.lng <= 0) return;
-        getStoreListByCoords(coords.lat, coords.lng, distance)
+        if (coordList.coord.lat <= 0 || coordList.coord.lng <= 0) return;
+        getStoreListByCoords(coordList.coord.lat, coordList.coord.lng, distance)
             .then((res) => {
                 setStoreList(res.result.rows);
             })
             .catch((e) => console.log(e));
-    }, [coords]);
+    }, [coordList.coord]);
 
     useEffect(() => {
         const vh = window.innerHeight * 0.01;
@@ -92,14 +91,17 @@ const index = () => {
     });
 
     const refreshHandler = () => {
-        setCoords(tempCoords);
+        setCoordList({ ...coordList, coord: coordList.temp });
         setIsChanged(false);
     };
 
     const centerChangeHandler = (e: naver.maps.Coord) => {
-        if (e.y !== coords.lat && e.x !== coords.lng) {
+        if (e.y !== coordList.coord.lat && e.x !== coordList.coord.lng) {
             setIsChanged(true);
-            setTempCoords({ result: "success", lat: e.y, lng: e.x });
+            setCoordList({
+                ...coordList,
+                temp: { result: "success", lat: e.y, lng: e.x },
+            });
         }
     };
 
@@ -115,8 +117,14 @@ const index = () => {
                     fallback={<Loading />}
                 >
                     <MapContainer
-                        curCoord={{ lat: curCoords.lat, lng: curCoords.lng }}
-                        coord={{ lat: coords.lat, lng: coords.lng }}
+                        clientCoord={{
+                            lat: coordList.clientCoord.lat,
+                            lng: coordList.clientCoord.lng,
+                        }}
+                        coord={{
+                            lat: coordList.coord.lat,
+                            lng: coordList.coord.lng,
+                        }}
                         markers={storeList}
                         onCenterChanged={(e: naver.maps.Coord) =>
                             centerChangeHandler(e)
@@ -147,9 +155,9 @@ const Container = styled.div`
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     margin: 0 auto;
-    background-color: ${({ theme }) => theme.bg};
-    color: ${({ theme }) => theme.black}
-    font-size: ${({ theme }) => theme.l};
+    background-color: ${({ theme }) => theme.colors.bg};
+    color: ${({ theme }) => theme.colors.black}
+    font-size: ${({ theme }) => theme.sizes.l};
     z-index: 9999;
     overflow: hidden;
 `;
@@ -163,14 +171,14 @@ const RefreshButton = styled.button`
     min-width: 150px;
     height: 50px;
     padding: 0 10px;
-    background-color: ${({ theme }) => theme.pageBtnActive};
+    background-color: ${({ theme }) => theme.colors.pageBtnActive};
     border: none;
     border-radius: 50px;
     outline: none;
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.colors.white};
     font-weight: 700;
-    font-size: ${({ theme }) => theme.l};
-    box-shadow: 0px 2px 10px -2px ${({ theme }) => theme.pageBtnActive};
+    font-size: ${({ theme }) => theme.sizes.l};
+    box-shadow: 0px 2px 10px -2px ${({ theme }) => theme.colors.pageBtnActive};
 `;
 
-export default index;
+export default Map;

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const index = () => {
+const Header = () => {
     return (
         <Container>
             <Link to={"/"}>
@@ -23,11 +23,11 @@ const Container = styled.header`
 `;
 
 const Title = styled.h1`
-    font-size: ${({ theme }) => theme.xl};
+    font-size: ${({ theme }) => theme.sizes.xl};
     font-family: "OAGothic";
     font-weight: 800;
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.colors.white};
     text-align: center;
 `;
 
-export default index;
+export default Header;

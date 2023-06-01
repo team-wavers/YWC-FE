@@ -5,7 +5,7 @@ type ListViewPropTypes = {
     children: React.ReactNode;
 };
 
-const index = ({ children }: ListViewPropTypes) => {
+const ListView = ({ children }: ListViewPropTypes) => {
     return <Container>{children}</Container>;
 };
 
@@ -16,4 +16,4 @@ const Container = styled.ul`
     height: auto;
     gap: 10px;
 `;
-export default index;
+export default ListView;

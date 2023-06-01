@@ -1,8 +1,8 @@
 import React from "react";
-import { ReactComponent as Warning } from "../../assets/icons/warning-icon.svg";
+import { ReactComponent as Warning } from "../assets/icons/warning-icon.svg";
 import styled from "styled-components";
 
-const index = () => {
+const NotFound = () => {
     return (
         <Container>
             <Warning fill="#93A8BB" />
@@ -22,8 +22,8 @@ const Container = styled.div`
 `;
 
 const Text = styled.p`
-    font-size: ${({ theme }) => theme.l};
-    color: ${({ theme }) => theme.pageBtn};
+    font-size: ${({ theme }) => theme.sizes.l};
+    color: ${({ theme }) => theme.colors.pageBtn};
 `;
 
-export default index;
+export default NotFound;

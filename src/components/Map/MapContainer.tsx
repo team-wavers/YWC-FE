@@ -1,15 +1,15 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Listener, Marker, NaverMap, useNavermaps } from "react-naver-maps";
-import { IStores, IStore } from "../../../types/store";
-import PlaceInformation from "../PlaceInformation";
+import { IStores, IStore } from "../../types/store";
+import PlaceInformation from "./PlaceInformation";
 import styled from "styled-components";
-import { ReactComponent as CenterIcon } from "../../../assets/icons/location-icon.svg";
-import { ReactComponent as HomeIcon } from "../../../assets/icons/home-icon.svg";
-import useOverlapMarkers from "../../../hooks/useOverlapMarkers";
+import { ReactComponent as CenterIcon } from "../../assets/icons/location-icon.svg";
+import { ReactComponent as HomeIcon } from "../../assets/icons/home-icon.svg";
+import useOverlapMarkers from "../../hooks/useOverlapMarkers";
 import { useNavigate } from "react-router-dom";
 
 type MapContainerPropsType = {
-    curCoord: { lat: number; lng: number };
+    clientCoord: { lat: number; lng: number };
     coord: { lat: number; lng: number };
     markers: IStores;
     onCenterChanged: (e: naver.maps.Coord) => void;
@@ -17,13 +17,13 @@ type MapContainerPropsType = {
     refresh: React.ReactNode;
 };
 
-const index = ({
+const MapContainer = ({
     coord,
     markers,
     onCenterChanged,
     onZoomChanged,
     refresh,
-    curCoord,
+    clientCoord,
 }: MapContainerPropsType) => {
     const navermap = useNavermaps();
     const ovMarkers = useOverlapMarkers(markers);
@@ -40,19 +40,13 @@ const index = ({
     const [ovPlaceList, setOvPlaceList] = useState<IStores>([]);
 
     useEffect(() => {
-        mapRef.current && console.log(mapRef.current.getCenter());
-    }, []);
-
-    useEffect(() => {
         setOvPlaceList([]);
     }, [onCenterChanged, onZoomChanged]);
 
     const panToCenter = () => {
         mapRef.current &&
-            console.log(
-                mapRef.current.panTo(
-                    new navermap.LatLng(curCoord.lat, curCoord.lng),
-                ),
+            mapRef.current.panTo(
+                new navermap.LatLng(clientCoord.lat, clientCoord.lng),
             );
     };
 
@@ -188,7 +182,7 @@ const ButtonContainer = styled.div`
 const MenuButton = styled.button`
     width: 50px;
     height: 50px;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.colors.white};
     border-radius: 50px;
     outline: none;
     border: none;
@@ -238,14 +232,14 @@ const PlaceCount = styled.span`
     top: 0;
     width: 100%;
     padding: 10px;
-    font-size: ${({ theme }) => theme.s};
+    font-size: ${({ theme }) => theme.sizes.s};
     color: #ccc;
     text-align: center;
 `;
 
 const PlaceItem = styled.button`
     width: 100%;
-    font-size: ${({ theme }) => theme.s};
+    font-size: ${({ theme }) => theme.sizes.s};
     font-weight: 500;
     color: #222;
     text-align: left;
@@ -259,4 +253,4 @@ const PlaceItem = styled.button`
     }
 `;
 
-export default index;
+export default MapContainer;

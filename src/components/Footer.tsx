@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const index = () => {
+const Footer = () => {
     return (
         <FooterContainer>
             <Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
@@ -18,8 +18,8 @@ const FooterContainer = styled.footer`
     justify-content: center;
     align-items: center;
     gap: 3px;
-    font-size: ${({ theme }) => theme.s};
-    color: ${({ theme }) => theme.pageBtn};
+    font-size: ${({ theme }) => theme.sizes.s};
+    color: ${({ theme }) => theme.colors.pageBtn};
 `;
 
 const Text = styled.p`
@@ -27,4 +27,4 @@ const Text = styled.p`
     font-size: inherit;
 `;
 
-export default index;
+export default Footer;
