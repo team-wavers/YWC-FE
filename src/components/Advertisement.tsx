@@ -8,7 +8,7 @@ const Advertisement = () => {
 const Container = styled.div`
     width: calc(100% + 40px);
     height: 100px;
-    background-color: ${({ theme }) => theme.pageBtn};
+    background-color: ${({ theme }) => theme.colors.pageBtn};
     opacity: 0.1;
 `;
 

@@ -1,11 +1,11 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Listener, Marker, NaverMap, useNavermaps } from "react-naver-maps";
-import { IStores, IStore } from "../../../types/store";
-import PlaceInformation from "../PlaceInformation";
+import { IStores, IStore } from "../../types/store";
+import PlaceInformation from "./PlaceInformation";
 import styled from "styled-components";
-import { ReactComponent as CenterIcon } from "../../../assets/icons/location-icon.svg";
-import { ReactComponent as HomeIcon } from "../../../assets/icons/home-icon.svg";
-import useOverlapMarkers from "../../../hooks/useOverlapMarkers";
+import { ReactComponent as CenterIcon } from "../../assets/icons/location-icon.svg";
+import { ReactComponent as HomeIcon } from "../../assets/icons/home-icon.svg";
+import useOverlapMarkers from "../../hooks/useOverlapMarkers";
 import { useNavigate } from "react-router-dom";
 
 type MapContainerPropsType = {
@@ -17,7 +17,7 @@ type MapContainerPropsType = {
     refresh: React.ReactNode;
 };
 
-const index = ({
+const MapContainer = ({
     coord,
     markers,
     onCenterChanged,
@@ -182,7 +182,7 @@ const ButtonContainer = styled.div`
 const MenuButton = styled.button`
     width: 50px;
     height: 50px;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.colors.white};
     border-radius: 50px;
     outline: none;
     border: none;
@@ -232,14 +232,14 @@ const PlaceCount = styled.span`
     top: 0;
     width: 100%;
     padding: 10px;
-    font-size: ${({ theme }) => theme.s};
+    font-size: ${({ theme }) => theme.sizes.s};
     color: #ccc;
     text-align: center;
 `;
 
 const PlaceItem = styled.button`
     width: 100%;
-    font-size: ${({ theme }) => theme.s};
+    font-size: ${({ theme }) => theme.sizes.s};
     font-weight: 500;
     color: #222;
     text-align: left;
@@ -253,4 +253,4 @@ const PlaceItem = styled.button`
     }
 `;
 
-export default index;
+export default MapContainer;

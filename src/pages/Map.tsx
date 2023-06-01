@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import MapContainer from "../../components/Map/MapContainer";
+import MapContainer from "../components/Map/MapContainer";
 import { Container as MapDiv } from "react-naver-maps";
-import Loading from "../../components/Loading";
-import { getStoreListByCoords } from "../../apis/store";
-import { IStores } from "../../types/store";
-import { coordType } from "../../types/coord";
-import getZoomDistance from "../../utils/zoomDistance";
-import { ReactComponent as RefreshIcon } from "../../assets/icons/refresh-icon.svg";
+import Loading from "../components/Loading";
+import { getStoreListByCoords } from "../apis/store";
+import { IStores } from "../types/store";
+import { coordType } from "../types/coord";
+import getZoomDistance from "../utils/zoomDistance";
+import { ReactComponent as RefreshIcon } from "../assets/icons/refresh-icon.svg";
 import { useNavigate } from "react-router-dom";
 
 type coordListType = {
@@ -16,7 +16,7 @@ type coordListType = {
     temp: coordType;
 };
 
-const index = () => {
+const Map = () => {
     const [coordList, setCoordList] = useState<coordListType>({
         coord: { result: null, lat: 0, lng: 0 },
         clientCoord: { result: null, lat: 0, lng: 0 },
@@ -155,9 +155,9 @@ const Container = styled.div`
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
     margin: 0 auto;
-    background-color: ${({ theme }) => theme.bg};
-    color: ${({ theme }) => theme.black}
-    font-size: ${({ theme }) => theme.l};
+    background-color: ${({ theme }) => theme.colors.bg};
+    color: ${({ theme }) => theme.colors.black}
+    font-size: ${({ theme }) => theme.sizes.l};
     z-index: 9999;
     overflow: hidden;
 `;
@@ -171,14 +171,14 @@ const RefreshButton = styled.button`
     min-width: 150px;
     height: 50px;
     padding: 0 10px;
-    background-color: ${({ theme }) => theme.pageBtnActive};
+    background-color: ${({ theme }) => theme.colors.pageBtnActive};
     border: none;
     border-radius: 50px;
     outline: none;
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.colors.white};
     font-weight: 700;
-    font-size: ${({ theme }) => theme.l};
-    box-shadow: 0px 2px 10px -2px ${({ theme }) => theme.pageBtnActive};
+    font-size: ${({ theme }) => theme.sizes.l};
+    box-shadow: 0px 2px 10px -2px ${({ theme }) => theme.colors.pageBtnActive};
 `;
 
-export default index;
+export default Map;

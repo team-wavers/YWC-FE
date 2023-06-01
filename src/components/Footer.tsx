@@ -18,8 +18,8 @@ const FooterContainer = styled.footer`
     justify-content: center;
     align-items: center;
     gap: 3px;
-    font-size: ${({ theme }) => theme.s};
-    color: ${({ theme }) => theme.pageBtn};
+    font-size: ${({ theme }) => theme.sizes.s};
+    color: ${({ theme }) => theme.colors.pageBtn};
 `;
 
 const Text = styled.p`

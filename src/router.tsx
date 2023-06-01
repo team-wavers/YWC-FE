@@ -7,7 +7,7 @@ import Map from "./pages/Map";
 import { GlobalStyle } from "./styles/GlobalStyles"; // 추후에 수정
 import theme from "./styles/theme";
 import { ThemeProvider } from "styled-components";
-import Layout from "./layout";
+import Layout from "./Layout";
 import { HelmetProvider } from "react-helmet-async";
 import { NavermapsProvider } from "react-naver-maps";
 

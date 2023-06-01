@@ -4,9 +4,8 @@ import Feedback from "./Feedback";
 import Table from "./Table";
 import { ReactComponent as MapIcon } from "../../assets/icons/map-search-icon.svg";
 import { Link } from "react-router-dom";
-// import Advertisement from "../Advertisement";
 
-const index = () => {
+const InformationBox = () => {
     return (
         <Container>
             <Link to={"/map"} style={{ width: "auto" }}>
@@ -31,9 +30,9 @@ const Container = styled.section`
     font-family: "OAGothic", sans-serif;
     padding: 20px;
     padding-top: 0;
-    font-size: ${({ theme }) => theme.l};
-    line-height: ${({ theme }) => theme.xl};
-    color: ${({ theme }) => theme.black};
+    font-size: ${({ theme }) => theme.sizes.l};
+    line-height: ${({ theme }) => theme.sizes.xl};
+    color: ${({ theme }) => theme.colors.black};
 `;
 
 const MapButton = styled.button`
@@ -50,9 +49,9 @@ const MapButton = styled.button`
     border: none;
     border-radius: 10px;
     outline: none;
-    font-size: ${({ theme }) => theme.xl};
+    font-size: ${({ theme }) => theme.sizes.xl};
     font-weight: 600;
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.colors.black};
 `;
 
-export default index;
+export default InformationBox;

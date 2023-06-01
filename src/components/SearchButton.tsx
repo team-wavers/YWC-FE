@@ -22,7 +22,7 @@ const Button = styled.button`
     height: 50px;
     border: none;
     outline: none;
-    background-color: ${({ theme }) => theme.pageBtnActive};
+    background-color: ${({ theme }) => theme.colors.pageBtnActive};
 `;
 
 export default SearchButton;

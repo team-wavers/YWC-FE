@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const index = () => {
+const Feedback = () => {
     return (
         <>
             <FeedbackContainer>
@@ -42,21 +42,21 @@ const FeedbackContainer = styled.div`
 
 const FeedbackTitle = styled.h3`
     width: 100%;
-    font-size: ${({ theme }) => theme.l};
+    font-size: ${({ theme }) => theme.sizes.l};
     margin-bottom: 5px;
 `;
 
 const FeedbackSubTitle = styled.h4`
-    font-size: ${({ theme }) => theme.m};
+    font-size: ${({ theme }) => theme.sizes.m};
     font-weight: 500;
-    line-height: ${({ theme }) => theme.l};
+    line-height: ${({ theme }) => theme.sizes.l};
 `;
 
 const EmailContainer = styled.div`
     width: 200px;
     height: 40px;
-    background-color: ${({ theme }) => theme.white};
-    font-size: ${({ theme }) => theme.m};
+    background-color: ${({ theme }) => theme.colors.white};
+    font-size: ${({ theme }) => theme.sizes.m};
     line-height: 40px;
     padding: 0 10px;
     border-radius: 20px;
@@ -64,4 +64,4 @@ const EmailContainer = styled.div`
     margin: 15px;
 `;
 
-export default index;
+export default Feedback;

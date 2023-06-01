@@ -85,12 +85,12 @@ const PageButton = styled.button<PageButtonPropsType>`
     background-color: transparent;
     border: none;
     outline: none;
-    font-size: ${({ theme }) => theme.m};
+    font-size: ${({ theme }) => theme.sizes.m};
     font-weight: 700;
-    color: ${({ theme }) => theme.pageBtn};
+    color: ${({ theme }) => theme.colors.pageBtn};
     ${({ activated, theme }) =>
         activated &&
-        `background-color: ${theme.pageBtnActive}; border-radius: 10px; color: white;`};
+        `background-color: ${theme.colors.pageBtnActive}; border-radius: 10px; color: white;`};
 `;
 
 export default Pagination;

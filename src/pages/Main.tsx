@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import SearchInput from "../../components/SearchInput";
-import SearchButton from "../../components/SearchButton";
-import ListView from "../../components/ListView";
-import ListItem from "../../components/ListView/ListItem";
-import Pagination from "../../components/Pagination";
-import Loading from "../../components/Loading";
-import InformationBox from "../../components/InformationBox";
-import { getStoreList } from "../../apis/store";
-import { IStores } from "../../types/store";
+import SearchInput from "../components/SearchInput";
+import SearchButton from "../components/SearchButton";
+import ListView from "../components/ListView/ListView";
+import ListItem from "../components/ListView/ListItem";
+import Pagination from "../components/Pagination";
+import Loading from "../components/Loading";
+import InformationBox from "../components/InformationBox/InformationBox";
+import { getStoreList } from "../apis/store";
+import { IStores } from "../types/store";
 import QueryString from "qs";
 
-const index = () => {
+const Main = () => {
     const [params, setParams] = useSearchParams();
     const [storeList, setStoreList] = useState<IStores>([]);
     const [loading, setLoading] = useState<boolean>(false);
@@ -123,7 +123,7 @@ const SearchContainer = styled.section`
     align-items: center;
     width: 100%;
     height: 50px;
-    background-color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.colors.white};
     box-shadow: 0px 10px 10px -10px rgba(0, 0, 0, 0.1);
 `;
 
@@ -137,8 +137,8 @@ const SearchCount = styled.span`
     display: block;
     width: 100%;
     height: 30px;
-    color: ${({ theme }) => theme.pageBtn};
-    font-size: ${({ theme }) => theme.m};
+    color: ${({ theme }) => theme.colors.pageBtn};
+    font-size: ${({ theme }) => theme.sizes.m};
     font-weight: 600;
 `;
 
@@ -149,8 +149,8 @@ const NoResultContainer = styled.div`
     width: 100%;
     height: 100px;
     font-weight: 600;
-    font-size: ${({ theme }) => theme.l};
-    color: ${({ theme }) => theme.pageBtn};
+    font-size: ${({ theme }) => theme.sizes.l};
+    color: ${({ theme }) => theme.colors.pageBtn};
 `;
 
-export default index;
+export default Main;
