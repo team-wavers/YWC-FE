@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import MapMenu from "../../components/Map/MapMenu";
 import MapContainer from "../../components/Map/MapContainer";
 import { Container as MapDiv } from "react-naver-maps";
 import Loading from "../../components/Loading";
 import { getStoreListByCoords } from "../../apis/store";
 import { IStores } from "../../types/store";
+import getZoomDistance from "../../utils/zoomDistance";
 import { ReactComponent as RefreshIcon } from "../../assets/icons/refresh-icon.svg";
-// import useDebounce from "../../hooks/useDebounce";
 
 type coordsType = {
     result: string | null;
@@ -16,20 +15,26 @@ type coordsType = {
 };
 
 const index = () => {
-    const [loading, setLoading] = useState(false);
     const [coords, setCoords] = useState<coordsType>({
         result: null,
         lat: 0,
         lng: 0,
     });
-    const [storeList, setStoreList] = useState<IStores>([]);
-    const [distance, setDistance] = useState(300);
-    const [isChanged, setIsChanged] = useState(false);
+    const [curCoords, setCurCoords] = useState<coordsType>({
+        result: null,
+        lat: 0,
+        lng: 0,
+    });
     const [tempCoords, setTempCoords] = useState<coordsType>({
         result: null,
         lat: 0,
         lng: 0,
     });
+
+    const [loading, setLoading] = useState(false);
+    const [storeList, setStoreList] = useState<IStores>([]);
+    const [distance, setDistance] = useState(300);
+    const [isChanged, setIsChanged] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -41,6 +46,11 @@ const index = () => {
                 (c) => {
                     setCoords({
                         ...coords,
+                        result: "success",
+                        lat: c.coords.latitude,
+                        lng: c.coords.longitude,
+                    });
+                    setCurCoords({
                         result: "success",
                         lat: c.coords.latitude,
                         lng: c.coords.longitude,
@@ -93,31 +103,10 @@ const index = () => {
         }
     };
 
-    const zoomChangeHandler = (e: number) => {
-        switch (e) {
-            case 17:
-                setDistance(300);
-                return;
-            case 18:
-                setDistance(150);
-                return;
-            case 19:
-                setDistance(75);
-                return;
-            case 20:
-                setDistance(50);
-                return;
-            case 21:
-                setDistance(25);
-                return;
-        }
-    };
-
     if (loading) return <Loading />;
     return (
         <>
             <Container>
-                <MapMenu />
                 <MapDiv
                     style={{
                         width: "100%",
@@ -126,12 +115,15 @@ const index = () => {
                     fallback={<Loading />}
                 >
                     <MapContainer
+                        curCoord={{ lat: curCoords.lat, lng: curCoords.lng }}
                         coord={{ lat: coords.lat, lng: coords.lng }}
                         markers={storeList}
                         onCenterChanged={(e: naver.maps.Coord) =>
                             centerChangeHandler(e)
                         }
-                        onZoomChanged={(e: number) => zoomChangeHandler(e)}
+                        onZoomChanged={(e: number) =>
+                            setDistance(getZoomDistance(e))
+                        }
                         refresh={
                             isChanged ? (
                                 <RefreshButton onClick={() => refreshHandler()}>
