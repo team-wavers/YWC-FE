@@ -9,7 +9,7 @@ import useOverlapMarkers from "../../../hooks/useOverlapMarkers";
 import { useNavigate } from "react-router-dom";
 
 type MapContainerPropsType = {
-    curCoord: { lat: number; lng: number };
+    clientCoord: { lat: number; lng: number };
     coord: { lat: number; lng: number };
     markers: IStores;
     onCenterChanged: (e: naver.maps.Coord) => void;
@@ -23,7 +23,7 @@ const index = ({
     onCenterChanged,
     onZoomChanged,
     refresh,
-    curCoord,
+    clientCoord,
 }: MapContainerPropsType) => {
     const navermap = useNavermaps();
     const ovMarkers = useOverlapMarkers(markers);
@@ -40,19 +40,13 @@ const index = ({
     const [ovPlaceList, setOvPlaceList] = useState<IStores>([]);
 
     useEffect(() => {
-        mapRef.current && console.log(mapRef.current.getCenter());
-    }, []);
-
-    useEffect(() => {
         setOvPlaceList([]);
     }, [onCenterChanged, onZoomChanged]);
 
     const panToCenter = () => {
         mapRef.current &&
-            console.log(
-                mapRef.current.panTo(
-                    new navermap.LatLng(curCoord.lat, curCoord.lng),
-                ),
+            mapRef.current.panTo(
+                new navermap.LatLng(clientCoord.lat, clientCoord.lng),
             );
     };
 
