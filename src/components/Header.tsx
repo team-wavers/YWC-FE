@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const index = () => {
+const Header = () => {
     return (
         <Container>
             <Link to={"/"}>
@@ -30,4 +30,4 @@ const Title = styled.h1`
     text-align: center;
 `;
 
-export default index;
+export default Header;

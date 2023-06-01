@@ -8,6 +8,7 @@ import { IStores } from "../../types/store";
 import { coordType } from "../../types/coord";
 import getZoomDistance from "../../utils/zoomDistance";
 import { ReactComponent as RefreshIcon } from "../../assets/icons/refresh-icon.svg";
+import { useNavigate } from "react-router-dom";
 
 type coordListType = {
     coord: coordType;
@@ -26,6 +27,7 @@ const index = () => {
     const [storeList, setStoreList] = useState<IStores>([]);
     const [distance, setDistance] = useState(300);
     const [isChanged, setIsChanged] = useState(false);
+    const nav = useNavigate();
 
     useEffect(() => {
         setLoading(true);
@@ -59,6 +61,7 @@ const index = () => {
                     alert(
                         "위치를 받아오는 데 오류가 발생하였습니다. 위치 권한을 다시 확인 해 주세요.",
                     );
+                    nav("/");
                 },
             );
         } else {

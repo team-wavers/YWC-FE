@@ -7,7 +7,7 @@ type SearchInputPropsType = {
     defaultValue: string;
 };
 
-const index = ({
+const SearchInput = ({
     onChange,
     onKeyPress,
     defaultValue,
@@ -35,4 +35,4 @@ const Input = styled.input`
     }
 `;
 
-export default index;
+export default SearchInput;

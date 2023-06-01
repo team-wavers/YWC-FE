@@ -2,7 +2,7 @@ import React from "react";
 import { Oval } from "react-loader-spinner";
 import styled from "styled-components";
 
-const index = () => {
+const Loading = () => {
     return (
         <LoaderContainer>
             <Oval
@@ -23,4 +23,4 @@ const LoaderContainer = styled.div`
     height: 300px;
 `;
 
-export default index;
+export default Loading;

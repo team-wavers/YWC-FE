@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const index = () => {
+const Footer = () => {
     return (
         <FooterContainer>
             <Text>© 2023 youthwelfare.kr - All Rights Reserved.</Text>
@@ -27,4 +27,4 @@ const Text = styled.p`
     font-size: inherit;
 `;
 
-export default index;
+export default Footer;
