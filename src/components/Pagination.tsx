@@ -16,6 +16,7 @@ type PageButtonPropsType = {
 };
 
 const Pagination = ({ total, limit, maxPage }: PaginationPropsType) => {
+    if (total < limit) return <></>;
     const [params, setParams] = useSearchParams();
     const { prevPage, nextPage, pageRange, totalPages } = usePagination(
         total,
