@@ -14,7 +14,7 @@ import { NavermapsProvider } from "react-naver-maps";
 const pathList: Array<pathType> = [{ path: "/", element: <Main /> }];
 
 const Router = () => {
-    const clientId = process.env.REACT_APP_NAVER_MAP_CLIENT_ID;
+    const clientId = import.meta.env.VITE_NAVER_MAP_CLIENT_ID;
     return (
         <BrowserRouter>
             <ThemeProvider theme={theme}>

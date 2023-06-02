@@ -2,7 +2,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
@@ -28,10 +28,10 @@
         <title>전라남도 전남청년 문화복지카드 사용처</title>
         <script
             async
-            src="%REACT_APP_GOOGLE_ADSENSE_URL%"
+            src="%VITE_GOOGLE_ADSENSE_URL%"
             crossorigin="anonymous"
         ></script>
-        <script async src="%REACT_APP_GTAG_URL%"></script>
+        <script async src="%VITE_GTAG_URL%"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -39,11 +39,12 @@
             }
             gtag("js", new Date());
 
-            gtag("config", "%REACT_APP_GTAG%");
+            gtag("config", "%VITE_GTAG%");
         </script>
     </head>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
+        <script type="module" src="src/index.tsx"></script>
     </body>
 </html>

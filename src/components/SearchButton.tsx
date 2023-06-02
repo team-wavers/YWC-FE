@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as SearchIcon } from "../assets/icons/search-icon.svg"; // 추후에 수정
+import { ReactComponent as SearchIcon } from "@assets/icons/search-icon.svg"; // 추후에 수정
 
 type SearchButtonPropType = {
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;

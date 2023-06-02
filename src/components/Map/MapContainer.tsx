@@ -1,11 +1,11 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Listener, Marker, NaverMap, useNavermaps } from "react-naver-maps";
-import { IStores, IStore } from "../../types/store";
+import { IStores, IStore } from "@_types/store";
 import PlaceInformation from "./PlaceInformation";
 import styled from "styled-components";
-import { ReactComponent as CenterIcon } from "../../assets/icons/location-icon.svg";
-import { ReactComponent as HomeIcon } from "../../assets/icons/home-icon.svg";
-import useOverlapMarkers from "../../hooks/useOverlapMarkers";
+import { ReactComponent as CenterIcon } from "@assets/icons/location-icon.svg";
+import { ReactComponent as HomeIcon } from "@assets/icons/home-icon.svg";
+import useOverlapMarkers from "@hooks/useOverlapMarkers";
 import { useNavigate } from "react-router-dom";
 
 type MapContainerPropsType = {
