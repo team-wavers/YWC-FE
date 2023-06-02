@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
-import SearchInput from "../components/SearchInput";
-import SearchButton from "../components/SearchButton";
-import ListView from "../components/ListView/ListView";
-import ListItem from "../components/ListView/ListItem";
-import Pagination from "../components/Pagination";
-import Loading from "../components/Loading";
-import InformationBox from "../components/InformationBox/InformationBox";
-import { getStoreList } from "../apis/store";
-import { IStores } from "../types/store";
+import SearchInput from "@components/SearchInput";
+import SearchButton from "@components/SearchButton";
+import ListView from "@components/ListView/ListView";
+import ListItem from "@components/ListView/ListItem";
+import Pagination from "@components/Pagination";
+import Loading from "@components/Loading";
+import InformationBox from "@components/InformationBox/InformationBox";
+import { getStoreList } from "@apis/store";
+import { IStores } from "@_types/store";
 import QueryString from "qs";
 
 const Main = () => {
@@ -21,7 +21,7 @@ const Main = () => {
 
     const currentPage = params.get("page");
     const searchQuery = params.get("q");
-    const size = "5";
+    const size = 5;
 
     const searchHandler = (value: string) => {
         setParams(
@@ -107,10 +107,8 @@ const Main = () => {
             ) : (
                 <NoResultContainer>검색 결과가 없습니다.</NoResultContainer>
             )}
-            {count > Number(size) && !loading ? (
+            {!loading && (
                 <Pagination total={count} limit={Number(size)} maxPage={5} />
-            ) : (
-                <></>
             )}
         </>
     );

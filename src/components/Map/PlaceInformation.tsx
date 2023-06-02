@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as MarkerIcon } from "../../assets/icons/marker-icon.svg";
-import { ReactComponent as CategoryIcon } from "../../assets/icons/category-icon.svg";
-import { ReactComponent as CloseIcon } from "../../assets/icons/close-icon.svg";
+import { ReactComponent as MarkerIcon } from "@assets/icons/marker-icon.svg";
+import { ReactComponent as CategoryIcon } from "@assets/icons/category-icon.svg";
+import { ReactComponent as CloseIcon } from "@assets/icons/close-icon.svg";
 
 type PIPropsType = {
     name: string | null;

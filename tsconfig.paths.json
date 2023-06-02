@@ -7,7 +7,11 @@
             "@pages/*": ["src/pages/*"],
             "@pages": ["src/pages"],
             "@_types/*": ["src/types/*"],
-            "@styles/*": ["src/styles/*"]
+            "@styles/*": ["src/styles/*"],
+            "@apis/*": ["src/apis/*"],
+            "@utils/*": ["src/utils/*"],
+            "@assets/*": ["src/assets/*"],
+            "@hooks/*": ["src/hooks/*"]
         }
     }
 }

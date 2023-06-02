@@ -3,10 +3,10 @@ import { instance } from "./base";
 const getStoreList = async (
     q: string | null,
     page: string | null,
-    size: string | null,
+    size: number | null,
 ) => {
     return await instance()
-        .get(`v1/stores?q=${q}&page=${page}&size=${size}`)
+        .get(`v1/stores?q=${q}&page=${page}&size=${String(size)}`)
         .then((res) => res.data)
         .catch((e) => console.log(e));
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as ArrowLeft } from "../assets/icons/arrow-left.svg";
-import { ReactComponent as ArrowRight } from "../assets/icons/arrow-right.svg";
-import usePagination from "../hooks/usePagination";
+import { ReactComponent as ArrowLeft } from "@assets/icons/arrow-left.svg";
+import { ReactComponent as ArrowRight } from "@assets/icons/arrow-right.svg";
+import usePagination from "@hooks/usePagination";
 import { useSearchParams } from "react-router-dom";
 
 type PaginationPropsType = {
@@ -16,6 +16,7 @@ type PageButtonPropsType = {
 };
 
 const Pagination = ({ total, limit, maxPage }: PaginationPropsType) => {
+    if (total < limit) return <></>;
     const [params, setParams] = useSearchParams();
     const { prevPage, nextPage, pageRange, totalPages } = usePagination(
         total,

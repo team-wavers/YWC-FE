@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as MarkerIcon } from "../../assets/icons/marker-icon.svg";
-import { ReactComponent as CategoryIcon } from "../../assets/icons/category-icon.svg";
+import { ReactComponent as MarkerIcon } from "@assets/icons/marker-icon.svg";
+import { ReactComponent as CategoryIcon } from "@assets/icons/category-icon.svg";
 import { IStore } from "@_types/store";
 
 const ListItem = ({ name, address, category }: IStore) => {

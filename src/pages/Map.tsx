@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import MapContainer from "../components/Map/MapContainer";
+import MapContainer from "@components/Map/MapContainer";
 import { Container as MapDiv } from "react-naver-maps";
-import Loading from "../components/Loading";
-import { getStoreListByCoords } from "../apis/store";
-import { IStores } from "../types/store";
-import { coordType } from "../types/coord";
-import getZoomDistance from "../utils/zoomDistance";
-import { ReactComponent as RefreshIcon } from "../assets/icons/refresh-icon.svg";
+import Loading from "@components/Loading";
+import { getStoreListByCoords } from "@apis/store";
+import { IStores } from "@_types/store";
+import { coordType } from "@_types/coord";
+import getZoomDistance from "@utils/zoomDistance";
+import { ReactComponent as RefreshIcon } from "@assets/icons/refresh-icon.svg";
 import { useNavigate } from "react-router-dom";
 
 type coordListType = {
