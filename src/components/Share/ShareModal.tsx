@@ -20,6 +20,15 @@ const ShareModal = (
                 if (e.name === "AbortError") return;
             });
     };
+    const clipboardHandler = () => {
+        navigator.clipboard
+            .writeText("https://youthwelfare.kr")
+            .then(() =>
+                alert(
+                    "링크가 복사되었습니다!\n붙여넣기를 통해 링크를 공유해보세요 :)",
+                ),
+            );
+    };
 
     return (
         <Container ref={ref}>
@@ -40,11 +49,7 @@ const ShareModal = (
                     <ShareButton
                         bgColor="#8bd1e8"
                         name=" 링크 복사"
-                        onClick={() => {
-                            navigator.clipboard
-                                .writeText("https://youthwelfare.kr")
-                                .then(() => alert("링크가 복사되었습니다! "));
-                        }}
+                        onClick={() => clipboardHandler()}
                     >
                         <ClipboardIcon
                             style={{
@@ -150,7 +155,7 @@ const ShareButton = styled.button<{ bgColor: string; name: string }>`
         text-align: center;
         bottom: -15px;
         font-size: ${({ theme }) => theme.sizes.s};
-        font-weight: 600;
+        font-weight: 500;
         content: "${({ name }) => name && `${name}`}";
         color: ${({ theme }) => theme.colors.black};
     }
