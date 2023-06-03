@@ -1,16 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "./components/Header"; // 추후에 수정
-import Footer from "./components/Footer";
+import Header from "@components/Header"; // 추후에 수정
+import Footer from "@components/Footer";
+import ShareModal from "@components/Share/ShareModal";
+import ShareButton from "@components/Share/ShareButton";
 import { Outlet } from "react-router-dom";
+import useModal from "@hooks/useModal";
 
 const Layout = () => {
+    const { isOpen, setIsOpen, modalRef } = useModal();
     return (
         <Container>
             <Header />
             <Main>
                 <Outlet />
             </Main>
+            {!isOpen && (
+                <ShareButton onClick={() => setIsOpen((prev) => !prev)} />
+            )}
+            <ShareModal
+                closeBtnHandler={() => setIsOpen((prev) => !prev)}
+                ref={modalRef}
+            />
             <Footer />
         </Container>
     );

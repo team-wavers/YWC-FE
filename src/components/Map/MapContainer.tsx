@@ -235,6 +235,7 @@ const PlaceCount = styled.span`
     font-size: ${({ theme }) => theme.sizes.s};
     color: #ccc;
     text-align: center;
+    background-color: ${({ theme }) => theme.colors.white};
 `;
 
 const PlaceItem = styled.button`
