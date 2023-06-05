@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as Warning } from "../assets/icons/warning-icon.svg";
+import { ReactComponent as Warning } from "@assets/icons/warning-icon.svg";
 import styled from "styled-components";
 
 const NotFound = () => {

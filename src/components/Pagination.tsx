@@ -70,7 +70,7 @@ const Container = styled.nav`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 5px;
     width: 100%;
     min-height: 100px;
     padding: 10px 20px;
