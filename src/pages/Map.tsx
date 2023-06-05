@@ -75,7 +75,9 @@ const Map = () => {
         if (coordList.coord.lat <= 0 || coordList.coord.lng <= 0) return;
         getStoreListByCoords(coordList.coord.lat, coordList.coord.lng, distance)
             .then((res) => {
-                setStoreList(res.result.rows);
+                if (res.code === 2000) {
+                    setStoreList(res.result.rows);
+                }
             })
             .catch((e) => console.log(e));
     }, [coordList.coord]);
