@@ -1,20 +1,19 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { ReactComponent as SearchIcon } from "@assets/icons/search-icon.svg"; // 추후에 수정
 
-type SearchButtonPropType = {
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
-
-const SearchButton = ({ onClick }: SearchButtonPropType) => {
+const SearchButton = (
+    _props: unknown,
+    ref: React.ForwardedRef<HTMLButtonElement>,
+) => {
     return (
-        <Button onClick={onClick}>
+        <Container ref={ref}>
             <SearchIcon width="24" fill="#fff" />
-        </Button>
+        </Container>
     );
 };
 
-const Button = styled.button`
+const Container = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,4 +24,4 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.pageBtnActive};
 `;
 
-export default SearchButton;
+export default forwardRef(SearchButton);

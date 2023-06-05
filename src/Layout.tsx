@@ -4,6 +4,7 @@ import Header from "@components/Header"; // 추후에 수정
 import Footer from "@components/Footer";
 import ShareModal from "@components/Share/ShareModal";
 import ShareButton from "@components/Share/ShareButton";
+import SearchContainer from "@components/Search/SearchContainer";
 import { Outlet } from "react-router-dom";
 import useModal from "@hooks/useModal";
 
@@ -12,6 +13,7 @@ const Layout = () => {
     return (
         <Container>
             <Header />
+            <SearchContainer />
             <Main>
                 <Outlet />
             </Main>

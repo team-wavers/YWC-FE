@@ -15,5 +15,6 @@ const Container = styled.ul`
     width: 100%;
     height: auto;
     gap: 10px;
+    padding-bottom: 30px;
 `;
 export default ListView;
