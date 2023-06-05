@@ -133,7 +133,7 @@ const ShareButtonContainer = styled.div`
     width: 100%;
     height: 75px;
     margin-top: 30px;
-    gap: 15px;
+    gap: 20px;
     padding: 0px 5px;
 `;
 

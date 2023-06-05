@@ -5,10 +5,10 @@ const getStoreList = async (
     page: string | null,
     size: number | null,
 ) => {
-    return await instance()
-        .get(`v1/stores?q=${q}&page=${page}&size=${String(size)}`)
-        .then((res) => res.data)
-        .catch((e) => console.log(e));
+    const { data } = await instance().get(
+        `v1/stores?q=${q}&page=${page}&size=${String(size)}`,
+    );
+    return data;
 };
 
 const getStoreListByCoords = async (
