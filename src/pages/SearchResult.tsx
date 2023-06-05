@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSearchParams } from "react-router-dom";
 import { useStoreList } from "@hooks/queries/useStoreList";
-import Loading from "@components/Loading";
-import ListView from "@components/ListView/ListView";
-import ListItem from "@components/ListView/ListItem";
-import Pagination from "@/components/Pagination";
-import { IStore } from "@/types/store";
+import { Loading } from "@components/core";
+import { ListView } from "@components/ListView";
+import { ListItem } from "@components/ListView";
+import { Pagination } from "@components/core";
+import { IStore } from "@_types/store";
 import { ReactComponent as NoResultIcon } from "@assets/icons/no-result-emoji-icon.svg";
 
 const SearchResult = () => {

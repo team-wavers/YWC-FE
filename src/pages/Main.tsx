@@ -1,5 +1,5 @@
 import React from "react";
-import InformationBox from "@components/InformationBox/InformationBox";
+import { InformationBox } from "@components/InformationBox";
 
 const Main = () => {
     return <InformationBox />;

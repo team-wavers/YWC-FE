@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import MapContainer from "@components/Map/MapContainer";
 import { Container as MapDiv } from "react-naver-maps";
-import Loading from "@components/Loading";
+import { MapContainer } from "@components/Map";
+import { Loading } from "@components/core";
 import { getStoreListByCoords } from "@apis/store";
 import { IStores } from "@_types/store";
 import { coordType } from "@_types/coord";
