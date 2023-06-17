@@ -23,8 +23,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-/_
-
 .env
 .env.development
 .env.production
