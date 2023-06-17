@@ -5,10 +5,9 @@ const getStoreList = async (
     page: string | null,
     size: number | null,
 ) => {
-    const { data } = await instance().get(
+    return await instance().get(
         `v1/stores?q=${q}&page=${page}&size=${String(size)}`,
     );
-    return data;
 };
 
 const getStoreListByCoords = async (

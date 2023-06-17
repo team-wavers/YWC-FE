@@ -1,11 +1,11 @@
 import { responseType } from "@_types/response";
 import { useQuery } from "@tanstack/react-query";
 import { getStoreList } from "@apis/store";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 export const useStoreList = (q: string, page: number, size = 5) => {
     return useQuery<
-        responseType,
+        Promise<AxiosResponse<responseType>>,
         AxiosError,
         responseType,
         [string, string, number]
