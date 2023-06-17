@@ -12,7 +12,8 @@
             "@apis/*": ["src/apis/*"],
             "@utils/*": ["src/utils/*"],
             "@assets/*": ["src/assets/*"],
-            "@hooks/*": ["src/hooks/*"]
+            "@hooks/*": ["src/hooks/*"],
+            "@mocks/core": ["src/mocks"]
         }
     }
 }
