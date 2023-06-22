@@ -22,7 +22,6 @@ const Map = () => {
         clientCoord: { result: null, lat: 0, lng: 0 },
         temp: { result: null, lat: 0, lng: 0 },
     });
-
     const [loading, setLoading] = useState(false);
     const [storeList, setStoreList] = useState<IStores>([]);
     const [distance, setDistance] = useState(300);
@@ -134,7 +133,7 @@ const Map = () => {
                         onZoomChanged={(e: number) =>
                             setDistance(getZoomDistance(e))
                         }
-                        refresh={
+                        refreshBtn={
                             isChanged ? (
                                 <RefreshButton onClick={() => refreshHandler()}>
                                     <RefreshIcon width={24} />
@@ -144,6 +143,8 @@ const Map = () => {
                                 <></>
                             )
                         }
+                        coordList={coordList}
+                        setCoordList={setCoordList}
                     />
                 </MapDiv>
             </Container>

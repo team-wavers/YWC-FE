@@ -13,7 +13,13 @@ import { HelmetProvider } from "react-helmet-async";
 import { NavermapsProvider } from "react-naver-maps";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const qClient = new QueryClient();
+const qClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        },
+    },
+});
 
 const pathList: Array<pathType> = [
     { path: "/", element: <Main /> },
