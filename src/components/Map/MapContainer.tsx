@@ -1,4 +1,10 @@
-import React, { Suspense, useEffect, useRef, useState } from "react";
+import React, {
+    SetStateAction,
+    Suspense,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 import { Listener, Marker, NaverMap, useNavermaps } from "react-naver-maps";
 import { IStores, IStore } from "@_types/store";
 import { coordType } from "@_types/coord";
@@ -12,7 +18,6 @@ import { ReactComponent as CloseIcon } from "@assets/icons/close-icon.svg";
 import useOverlapMarkers from "@hooks/useOverlapMarkers";
 import { useNavigate } from "react-router-dom";
 import MapSearchList from "./MapSearchList";
-import Loading from "../Loading";
 import MapSearchItem from "./MapSearchItem";
 
 type coordListType = {
@@ -29,7 +34,7 @@ type MapContainerPropsType = {
     onZoomChanged: (e: number) => void;
     refreshBtn: React.ReactNode;
     coordList: coordListType;
-    setCoordList: any;
+    setCoordList: React.Dispatch<SetStateAction<coordListType>>;
 };
 
 const MapContainer = ({
