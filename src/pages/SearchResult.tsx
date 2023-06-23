@@ -18,7 +18,7 @@ const SearchResult = () => {
         5,
     );
 
-    // refetch data when query or page changeds
+    // refetch data when query or page changes
     useEffect(() => {
         refetch();
     }, [query, page]);

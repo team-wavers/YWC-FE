@@ -1,12 +1,25 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Listener, Marker, NaverMap, useNavermaps } from "react-naver-maps";
 import { IStores, IStore } from "@_types/store";
+import { coordType } from "@_types/coord";
+import { useStoreList } from "@hooks/queries/useStoreList";
 import PlaceInformation from "./PlaceInformation";
 import styled from "styled-components";
+import MapSearch from "./MapSearch";
 import { ReactComponent as CenterIcon } from "@assets/icons/location-icon.svg";
 import { ReactComponent as HomeIcon } from "@assets/icons/home-icon.svg";
+import { ReactComponent as CloseIcon } from "@assets/icons/close-icon.svg";
 import useOverlapMarkers from "@hooks/useOverlapMarkers";
 import { useNavigate } from "react-router-dom";
+import MapSearchList from "./MapSearchList";
+import Loading from "../Loading";
+import MapSearchItem from "./MapSearchItem";
+
+type coordListType = {
+    coord: coordType;
+    clientCoord: coordType;
+    temp: coordType;
+};
 
 type MapContainerPropsType = {
     clientCoord: { lat: number; lng: number };
@@ -14,7 +27,9 @@ type MapContainerPropsType = {
     markers: IStores;
     onCenterChanged: (e: naver.maps.Coord) => void;
     onZoomChanged: (e: number) => void;
-    refresh: React.ReactNode;
+    refreshBtn: React.ReactNode;
+    coordList: coordListType;
+    setCoordList: any;
 };
 
 const MapContainer = ({
@@ -22,13 +37,18 @@ const MapContainer = ({
     markers,
     onCenterChanged,
     onZoomChanged,
-    refresh,
+    refreshBtn,
     clientCoord,
+    coordList,
+    setCoordList,
 }: MapContainerPropsType) => {
     const navermap = useNavermaps();
     const ovMarkers = useOverlapMarkers(markers);
     const mapRef = useRef<naver.maps.Map>(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     const nav = useNavigate();
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const { status, data, refetch } = useStoreList(searchQuery, 1, 5); // 최상위 검색결과 5개만 가져옴
 
     const [info, setInfo] = useState<IStore>({
         _id: 0,
@@ -38,10 +58,15 @@ const MapContainer = ({
         category: "",
     });
     const [ovPlaceList, setOvPlaceList] = useState<IStores>([]);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
 
     useEffect(() => {
         setOvPlaceList([]);
     }, [onCenterChanged, onZoomChanged]);
+
+    useEffect(() => {
+        if (searchQuery) refetch();
+    }, [searchQuery]);
 
     const panToCenter = () => {
         mapRef.current &&
@@ -50,16 +75,36 @@ const MapContainer = ({
             );
     };
 
+    const searchHandler = () => {
+        const e = inputRef.current;
+        if (e && e.value !== "") {
+            setIsVisible(true);
+            setSearchQuery(e.value);
+        }
+    };
+
+    const clickHandler = (coord: coordType) => {
+        mapRef.current &&
+            mapRef.current.panTo(new navermap.LatLng(coord.lat, coord.lng));
+        setCoordList({
+            ...coordList,
+            coord: { result: "success", lat: coord.lat, lng: coord.lng },
+        });
+    };
+
     return (
         <>
-            <ButtonContainer>
-                <MenuButton onClick={() => nav("/")}>
-                    <HomeIcon />
-                </MenuButton>
-                <MenuButton onClick={() => panToCenter()}>
-                    <CenterIcon style={{ paddingTop: "3px" }} />
-                </MenuButton>
-            </ButtonContainer>
+            <MenuContainer>
+                <MenuButtonContainer>
+                    <MenuButton onClick={() => nav("/")}>
+                        <HomeIcon />
+                    </MenuButton>
+                    <MenuButton onClick={() => panToCenter()}>
+                        <CenterIcon style={{ paddingTop: "3px" }} />
+                    </MenuButton>
+                </MenuButtonContainer>
+                <MapSearch searchHandler={searchHandler} ref={inputRef} />
+            </MenuContainer>
             <NaverMap
                 // defaultCenter={new navermap.LatLng(coord.lat, coord.lng)}
                 defaultCenter={new navermap.LatLng(coord.lat, coord.lng)}
@@ -143,7 +188,7 @@ const MapContainer = ({
                     </Suspense>
                 )}
                 <Container>
-                    {refresh}
+                    {refreshBtn}
                     {info._id !== 0 && (
                         <PlaceInformation
                             name={info?.name}
@@ -160,16 +205,56 @@ const MapContainer = ({
                             }
                         />
                     )}
+
+                    {status === "loading" && !data ? (
+                        <></>
+                    ) : (
+                        <MapSearchList isVisible={isVisible}>
+                            <CloseButton
+                                onClick={() => setIsVisible((prev) => !prev)}
+                            >
+                                <CloseIcon width="22" />
+                            </CloseButton>
+                            {Number(data?.result.count) <= 0 ? (
+                                <NoResult>검색 결과가 없습니다.</NoResult>
+                            ) : (
+                                data?.result.rows.map((e) => {
+                                    return (
+                                        <MapSearchItem
+                                            key={e._id}
+                                            name={e.name}
+                                            category={e.category}
+                                            address={e.address}
+                                            clickHandler={() => {
+                                                clickHandler({
+                                                    result: "success",
+                                                    lat: Number(e.latitude),
+                                                    lng: Number(e.longitude),
+                                                });
+                                            }}
+                                        />
+                                    );
+                                })
+                            )}
+                        </MapSearchList>
+                    )}
                 </Container>
             </NaverMap>
         </>
     );
 };
 
-const ButtonContainer = styled.div`
-    position: relative;
-    top: 20px;
-    left: 20px;
+const MenuContainer = styled.section`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    gap: 10px;
+    padding: 20px 20px 0 20px;
+`;
+
+const MenuButtonContainer = styled.div`
     width: 50px;
     gap: 10px;
     display: flex;
@@ -252,6 +337,25 @@ const PlaceItem = styled.button`
     &:last-child {
         border-bottom: none;
     }
+`;
+
+const CloseButton = styled.button`
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+`;
+
+const NoResult = styled.h1`
+    padding-top: 20px;
+    font-size: ${({ theme }) => theme.sizes.m};
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.placeholder};
+    text-align: center;
 `;
 
 export default MapContainer;
