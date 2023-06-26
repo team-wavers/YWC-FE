@@ -26,14 +26,16 @@ const SearchResult = () => {
     // refetch data when query or page changeds
     useEffect(() => {
         refetch();
-        console.log(searchParams.get("city") + "refetch");
     }, [query, page, city]);
+
     useEffect(() => {
         console.log(data);
     }, [data]);
+
     useEffect(() => {
         setCity(searchParams.get("city"));
     }, [searchParams.get("city")]);
+
     if (status === "loading") return Loading();
     if (data && data.result.count === 0)
         return (
@@ -51,8 +53,19 @@ const SearchResult = () => {
         return (
             <LVContainer>
                 <FilteringBox>
+                    <FilteringItem selected={false} city={null}>
+                        전체
+                    </FilteringItem>
                     {cityList.map((e: string, i) => {
-                        return <FilteringItem city={e} key={i} />;
+                        return (
+                            <FilteringItem
+                                selected={city === e}
+                                city={e}
+                                key={i}
+                            >
+                                {e}
+                            </FilteringItem>
+                        );
                     })}
                 </FilteringBox>
 
