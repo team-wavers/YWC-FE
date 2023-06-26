@@ -13,7 +13,8 @@
             "@utils/*": ["src/utils/*"],
             "@assets/*": ["src/assets/*"],
             "@hooks/*": ["src/hooks/*"],
-            "@mocks/core": ["src/mocks"]
+            "@mocks/core": ["src/mocks"],
+            "@constants/*": ["src/constants/*"]
         }
     }
 }

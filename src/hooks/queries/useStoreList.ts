@@ -16,6 +16,6 @@ export const useStoreList = (
         [string, string, number]
     >(["ywc.storeList", q, page], async () => {
         const request = await getStoreList(q, String(page), size, city);
-        return request;
+        return request.data;
     });
 };

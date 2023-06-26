@@ -35,7 +35,7 @@ const Container = styled.div`
     min-height: 100vh;
     margin: 0 auto;
     background-color: ${({ theme }) => theme.colors.bg};
-    color: ${({ theme }) => theme.colors.black}
+    color: ${({ theme }) => theme.colors.black};
     font-size: ${({ theme }) => theme.sizes.l};
 `;
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSearchParams } from "react-router-dom";
 import { useStoreList } from "@hooks/queries/useStoreList";
@@ -8,21 +8,32 @@ import { ListItem } from "@components/ListView";
 import { Pagination } from "@components/core";
 import { IStore } from "@_types/store";
 import { ReactComponent as NoResultIcon } from "@assets/icons/no-result-emoji-icon.svg";
+import FilteringBox from "@/components/FilteringBox/FilteringBox";
+import cityList from "@constants/city";
+import FilteringItem from "@/components/FilteringBox/FilteringItem";
 
 const SearchResult = () => {
     const [searchParams] = useSearchParams();
     const [query, page] = [searchParams.get("q"), searchParams.get("page")];
+    const [city, setCity] = useState<string | null>(null);
     const { status, data, refetch } = useStoreList(
         String(query),
         Number(page),
         5,
+        String(city),
     );
 
     // refetch data when query or page changeds
     useEffect(() => {
         refetch();
-    }, [query, page]);
-
+        console.log(searchParams.get("city") + "refetch");
+    }, [query, page, city]);
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
+    useEffect(() => {
+        setCity(searchParams.get("city"));
+    }, [searchParams.get("city")]);
     if (status === "loading") return Loading();
     if (data && data.result.count === 0)
         return (
@@ -39,6 +50,12 @@ const SearchResult = () => {
     if (data && data.result.count > 0)
         return (
             <LVContainer>
+                <FilteringBox>
+                    {cityList.map((e: string, i) => {
+                        return <FilteringItem city={e} key={i} />;
+                    })}
+                </FilteringBox>
+
                 <ResultCount>
                     {data.result.count}개의 사용처가 있습니다.
                 </ResultCount>
