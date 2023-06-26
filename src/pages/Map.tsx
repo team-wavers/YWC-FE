@@ -7,7 +7,6 @@ import { getStoreListByCoords } from "@apis/store";
 import { IStores } from "@_types/store";
 import { coordType } from "@_types/coord";
 import getZoomDistance from "@utils/zoomDistance";
-import { ReactComponent as RefreshIcon } from "@assets/icons/refresh-icon.svg";
 import { useNavigate } from "react-router-dom";
 
 type coordListType = {
@@ -22,7 +21,6 @@ const Map = () => {
         clientCoord: { result: null, lat: 0, lng: 0 },
         temp: { result: null, lat: 0, lng: 0 },
     });
-
     const [loading, setLoading] = useState(false);
     const [storeList, setStoreList] = useState<IStores>([]);
     const [distance, setDistance] = useState(300);
@@ -134,16 +132,10 @@ const Map = () => {
                         onZoomChanged={(e: number) =>
                             setDistance(getZoomDistance(e))
                         }
-                        refresh={
-                            isChanged ? (
-                                <RefreshButton onClick={() => refreshHandler()}>
-                                    <RefreshIcon width={24} />
-                                    <span>현 위치에서 검색</span>
-                                </RefreshButton>
-                            ) : (
-                                <></>
-                            )
-                        }
+                        refreshHandler={refreshHandler}
+                        coordList={coordList}
+                        setCoordList={setCoordList}
+                        isChanged={isChanged}
                     />
                 </MapDiv>
             </Container>
@@ -162,25 +154,6 @@ const Container = styled.div`
     font-size: ${({ theme }) => theme.sizes.l};
     z-index: 9999;
     overflow: hidden;
-`;
-
-const RefreshButton = styled.button`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    min-width: 150px;
-    height: 50px;
-    padding: 0 10px;
-    background-color: ${({ theme }) => theme.colors.pageBtnActive};
-    border: none;
-    border-radius: 50px;
-    outline: none;
-    color: ${({ theme }) => theme.colors.white};
-    font-weight: 700;
-    font-size: ${({ theme }) => theme.sizes.l};
-    box-shadow: 0px 2px 10px -2px ${({ theme }) => theme.colors.pageBtnActive};
 `;
 
 export default Map;

@@ -27,7 +27,7 @@
     },
     "scripts": {
         "start": "vite",
-        "dev": "vite --host localhost --port 4000",
+        "dev": "vite --host localhost",
         "build": "tsc && vite build",
         "serve": "vite preview"
     },
