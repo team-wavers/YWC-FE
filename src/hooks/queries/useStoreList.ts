@@ -14,8 +14,12 @@ export const useStoreList = (
         AxiosError,
         responseType,
         [string, string, number]
-    >(["ywc.storeList", q, page], async () => {
-        const request = await getStoreList(q, String(page), size, city);
-        return request.data;
-    });
+    >(
+        ["ywc.storeList", q, page],
+        async () => {
+            const request = await getStoreList(q, String(page), size, city);
+            return request.data;
+        },
+        { enabled: false },
+    );
 };
