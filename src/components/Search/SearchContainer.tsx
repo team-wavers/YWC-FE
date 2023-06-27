@@ -4,13 +4,6 @@ import SearchInput from "./SearchInput";
 import SearchButton from "./SearchButton";
 import useSearch from "@hooks/useSearch";
 
-// type SCPropsType = {
-//     onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//     onKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-//     defaultValue: string;
-//     onButtonClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-// };
-
 const SearchContainer = () => {
     const { inputRef, buttonRef } = useSearch();
     return (

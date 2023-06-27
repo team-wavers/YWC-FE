@@ -69,7 +69,7 @@
 
 ##### Back-end
 
-[![Stacks](https://skills.thijs.gg/icons?i=nodejs&theme=light)](https://skills.thijs.gg)
+[![Stacks](https://skills.thijs.gg/icons?i=ts,nodejs,mysql,nginx,aws&theme=light)](https://skills.thijs.gg)
 
 ### Contact
 
