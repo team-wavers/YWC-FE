@@ -20,19 +20,17 @@ const SearchResult = () => {
         String(query),
         Number(page),
         5,
-        String(city),
+        city,
     );
 
     // refetch data when query or page changeds
     useEffect(() => {
+        setCity(null);
         refetch();
     }, [query, page, city]);
 
     useEffect(() => {
-        console.log(data);
-    }, [data]);
-
-    useEffect(() => {
+        console.log(typeof searchParams.get("city"));
         setCity(searchParams.get("city"));
     }, [searchParams.get("city")]);
 
