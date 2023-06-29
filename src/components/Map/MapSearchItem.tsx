@@ -1,4 +1,3 @@
-import { IStore } from "@/types/store";
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as MarkerIcon } from "@assets/icons/marker-icon.svg";
