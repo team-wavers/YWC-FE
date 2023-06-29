@@ -56,7 +56,7 @@ const MapContainer = ({
     const inputRef = useRef<HTMLInputElement>(null);
     const nav = useNavigate();
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const { status, data, refetch } = useStoreList(searchQuery, 1, 5);
+    const { status, data, refetch } = useStoreList(searchQuery, 1, 5, null);
 
     const [info, setInfo] = useState<IStore>({
         _id: 0,

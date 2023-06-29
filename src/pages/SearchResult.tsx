@@ -9,7 +9,7 @@ import { Pagination } from "@components/core";
 import { IStore } from "@_types/store";
 import { ReactComponent as NoResultIcon } from "@assets/icons/no-result-emoji-icon.svg";
 import FilteringBox from "@/components/FilteringBox/FilteringBox";
-import cityList from "@constants/city";
+import cityList from "@/constants/city";
 import FilteringItem from "@/components/FilteringBox/FilteringItem";
 
 const SearchResult = () => {
@@ -24,7 +24,6 @@ const SearchResult = () => {
     );
 
     useEffect(() => {
-        setCity(null);
         refetch();
     }, [query, page, city]);
 
@@ -33,62 +32,62 @@ const SearchResult = () => {
     }, [searchParams.get("city")]);
 
     if (status === "loading") return Loading();
-    if (data && data.result.count === 0)
-        return (
-            <NoResultContainer>
-                <NoResultIcon width={50} height={50} fill="#afafaf" />
-                <NoResultTitle>
-                    &quot;{query}&quot; 에 대한 검색 결과가 없습니다.
-                </NoResultTitle>
-                <NoResultSubTitle>
-                    검색어를 다시 확인해 보시겠어요?
-                </NoResultSubTitle>
-            </NoResultContainer>
-        );
-    if (data && data.result.count > 0)
-        return (
-            <LVContainer>
-                <FilteringBox>
-                    <FilteringItem selected={false} city={null}>
-                        전체
-                    </FilteringItem>
-                    {cityList.map((e: string, i) => {
-                        return (
-                            <FilteringItem
-                                selected={city === e}
-                                city={e}
-                                key={i}
-                            >
-                                {e}
-                            </FilteringItem>
-                        );
-                    })}
-                </FilteringBox>
+    return (
+        <LVContainer>
+            <FilteringBox>
+                <FilteringItem selected={false} city={null}>
+                    전체
+                </FilteringItem>
 
-                <ResultCount>
-                    {data.result.count}개의 사용처가 있습니다.
-                </ResultCount>
-                <ListView>
-                    {data.result.rows.map((e: IStore) => {
-                        return (
-                            <ListItem
-                                key={e._id}
-                                _id={e._id}
-                                name={e.name}
-                                category={e.category}
-                                address={e.address}
-                                phone={e.phone}
-                            />
-                        );
-                    })}
-                </ListView>
-                <Pagination
-                    total={data.result.count}
-                    limit={Number(5)}
-                    maxPage={5}
-                />
-            </LVContainer>
-        );
+                {cityList.map((e: string, i) => {
+                    return (
+                        <FilteringItem selected={city === e} city={e} key={i}>
+                            {e}
+                        </FilteringItem>
+                    );
+                })}
+            </FilteringBox>
+            {data && data.result.count === 0 ? (
+                <NoResultContainer>
+                    <NoResultIcon width={50} height={50} fill="#afafaf" />
+                    <NoResultTitle>
+                        &quot;{query}&quot; 에 대한 검색 결과가 없습니다.
+                    </NoResultTitle>
+                    <NoResultSubTitle>
+                        검색어를 다시 확인해 보시겠어요?
+                    </NoResultSubTitle>
+                </NoResultContainer>
+            ) : (
+                data && (
+                    <>
+                        <ResultCount>
+                            {data?.result.count}개의 사용처가 있습니다.
+                        </ResultCount>
+                        <ListView>
+                            {data?.result.rows.map((e: IStore) => {
+                                return (
+                                    <ListItem
+                                        key={e._id}
+                                        _id={e._id}
+                                        name={e.name}
+                                        category={e.category}
+                                        address={e.address}
+                                        phone={e.phone}
+                                    />
+                                );
+                            })}
+                        </ListView>
+                    </>
+                )
+            )}
+
+            <Pagination
+                total={data ? data.result.count : -1}
+                limit={Number(5)}
+                maxPage={5}
+            />
+        </LVContainer>
+    );
     return <></>;
 };
 
