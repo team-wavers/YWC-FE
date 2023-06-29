@@ -8,7 +8,7 @@ import React, {
 import { Listener, Marker, NaverMap, useNavermaps } from "react-naver-maps";
 import { IStores, IStore } from "@_types/store";
 import { coordType } from "@_types/coord";
-import { useStoreList } from "@hooks/queries/useStoreList";
+import { useSLInfQuery } from "@hooks/queries/useStoreList";
 import styled from "styled-components";
 import { ReactComponent as CenterIcon } from "@assets/icons/location-icon.svg";
 import { ReactComponent as HomeIcon } from "@assets/icons/home-icon.svg";
@@ -20,6 +20,8 @@ import MapSearchList from "./MapSearchList";
 import MapSearchItem from "./MapSearchItem";
 import MapSearch from "./MapSearch";
 import PlaceInformation from "./PlaceInformation";
+import { responseType } from "@/types/response";
+import useObserver from "@/hooks/useObserver";
 
 type coordListType = {
     coord: coordType;
@@ -54,9 +56,12 @@ const MapContainer = ({
     const ovMarkers = useOverlapMarkers(markers);
     const mapRef = useRef<naver.maps.Map>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const targetRef = useRef<HTMLDivElement>(null);
     const nav = useNavigate();
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const { status, data, refetch } = useStoreList(searchQuery, 1, 5, null);
+    const { data, status, fetchNextPage, hasNextPage } =
+        useSLInfQuery(searchQuery);
+    const [observe, unobserve] = useObserver(fetchNextPage);
 
     const [info, setInfo] = useState<IStore>({
         _id: 0,
@@ -74,8 +79,15 @@ const MapContainer = ({
     }, [onCenterChanged, onZoomChanged]);
 
     useEffect(() => {
-        if (searchQuery) refetch();
-    }, [searchQuery]);
+        targetRef.current && observe(targetRef.current);
+        !hasNextPage && targetRef.current && unobserve(targetRef.current);
+    }, [data]);
+
+    useEffect(() => {
+        status === "loading" && targetRef.current
+            ? unobserve(targetRef.current)
+            : targetRef.current && observe(targetRef.current);
+    }, [status]);
 
     const panToCenter = () => {
         mapRef.current &&
@@ -270,23 +282,42 @@ const MapContainer = ({
                             >
                                 <CloseIcon width="22" />
                             </CloseButton>
-                            {Number(data?.result.count) <= 0 ? (
+                            {data && data.pages[0].result.result.count <= 0 ? (
                                 <NoResult>검색 결과가 없습니다.</NoResult>
                             ) : (
-                                data?.result.rows.map((e) => {
-                                    return (
-                                        <MapSearchItem
-                                            key={e._id}
-                                            name={e.name}
-                                            category={e.category}
-                                            address={e.address}
-                                            clickHandler={() => {
-                                                setHLMarker(null);
-                                                clickHandler(e);
-                                            }}
-                                        />
-                                    );
-                                })
+                                data &&
+                                data.pages.map(
+                                    (e: {
+                                        nextPage: number;
+                                        result: responseType;
+                                    }) => {
+                                        return e.result.result.rows.map(
+                                            (item) => {
+                                                return (
+                                                    <MapSearchItem
+                                                        key={item._id}
+                                                        name={item.name}
+                                                        category={item.category}
+                                                        address={item.address}
+                                                        clickHandler={() => {
+                                                            setHLMarker(null);
+                                                            clickHandler(item);
+                                                        }}
+                                                    />
+                                                );
+                                            },
+                                        );
+                                    },
+                                )
+                            )}
+                            {data && data.pages[0].result.result.count > 0 && (
+                                <div
+                                    ref={targetRef}
+                                    style={{
+                                        width: "100%",
+                                        height: "10px",
+                                    }}
+                                ></div>
                             )}
                         </MapSearchList>
                     )}
