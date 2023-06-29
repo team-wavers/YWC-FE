@@ -18,14 +18,14 @@ export const useStoreList = (
         ["ywc.storeList", q, page],
         async () => {
             const request = await getStoreList(q, String(page), size, city);
-            return request.data;
+            return request?.data;
         },
         { enabled: false },
     );
 };
 
 export const useSLInfQuery = (q: string) => {
-    const { data, status, isFetching, fetchNextPage, hasNextPage } =
+    const { data, status, fetchNextPage, hasNextPage, refetch } =
         useInfiniteQuery<{
             result: responseType;
             nextPage: number;
@@ -34,12 +34,13 @@ export const useSLInfQuery = (q: string) => {
         }>(
             ["ywc.storeList.infQuery", q],
             async ({ pageParam = 1 }) => {
-                const request: AxiosResponse<responseType> = await getStoreList(
+                const request = await getStoreList(
                     q,
                     String(pageParam),
                     10,
                     null,
                 );
+
                 return {
                     currentPage: pageParam,
                     result: request.data,
@@ -53,8 +54,9 @@ export const useSLInfQuery = (q: string) => {
                         ? undefined
                         : lastPage.nextPage;
                 },
+                enabled: false,
             },
         );
 
-    return { data, status, isFetching, fetchNextPage, hasNextPage };
+    return { data, status, fetchNextPage, hasNextPage, refetch };
 };

@@ -59,9 +59,11 @@ const MapContainer = ({
     const targetRef = useRef<HTMLDivElement>(null);
     const nav = useNavigate();
     const [searchQuery, setSearchQuery] = useState<string>("");
-    const { data, status, fetchNextPage, hasNextPage } =
+    const { data, status, fetchNextPage, hasNextPage, refetch } =
         useSLInfQuery(searchQuery);
-    const [observe, unobserve] = useObserver(fetchNextPage);
+    const [observe, unobserve] = useObserver(() => {
+        fetchNextPage();
+    });
 
     const [info, setInfo] = useState<IStore>({
         _id: 0,
@@ -73,6 +75,10 @@ const MapContainer = ({
     const [ovPlaceList, setOvPlaceList] = useState<IStores>([]);
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [HLMarker, setHLMarker] = useState<IStore | null>(null);
+
+    useEffect(() => {
+        refetch({ refetchPage: (page, index) => index === 1 });
+    }, [searchQuery]);
 
     useEffect(() => {
         setOvPlaceList([]);
