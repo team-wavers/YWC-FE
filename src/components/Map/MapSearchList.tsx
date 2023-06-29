@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 
 type SearchListPropTypes = {
@@ -6,8 +6,15 @@ type SearchListPropTypes = {
     isVisible: boolean;
 };
 
-const MapSearchList = ({ isVisible, children }: SearchListPropTypes) => {
-    return <Container isVisible={isVisible}>{children}</Container>;
+const MapSearchList = (
+    { isVisible, children }: SearchListPropTypes,
+    ref: React.ForwardedRef<HTMLUListElement>,
+) => {
+    return (
+        <Container ref={ref} isVisible={isVisible}>
+            {children}
+        </Container>
+    );
 };
 
 const Container = styled.ul<{ isVisible: boolean }>`
@@ -29,4 +36,4 @@ const Container = styled.ul<{ isVisible: boolean }>`
     overflow-y: auto;
 `;
 
-export default MapSearchList;
+export default forwardRef(MapSearchList);
