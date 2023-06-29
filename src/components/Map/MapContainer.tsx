@@ -57,6 +57,7 @@ const MapContainer = ({
     const mapRef = useRef<naver.maps.Map>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
+    const listRef = useRef<HTMLUListElement>(null);
     const nav = useNavigate();
     const [searchQuery, setSearchQuery] = useState<string>("");
     const { data, status, fetchNextPage, hasNextPage, refetch } =
@@ -77,7 +78,10 @@ const MapContainer = ({
     const [HLMarker, setHLMarker] = useState<IStore | null>(null);
 
     useEffect(() => {
-        refetch({ refetchPage: (page, index) => index === 1 });
+        if (searchQuery) {
+            refetch({ refetchPage: (page, index) => index === 1 });
+            listRef.current && (listRef.current.scrollTop = 0);
+        }
     }, [searchQuery]);
 
     useEffect(() => {
@@ -282,7 +286,7 @@ const MapContainer = ({
                     {status === "loading" && !data ? (
                         <></>
                     ) : (
-                        <MapSearchList isVisible={isVisible}>
+                        <MapSearchList ref={listRef} isVisible={isVisible}>
                             <CloseButton
                                 onClick={() => setIsVisible((prev) => !prev)}
                             >
