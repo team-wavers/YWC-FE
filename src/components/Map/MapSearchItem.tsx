@@ -43,7 +43,7 @@ const Container = styled.li`
     width: 100%;
     height: auto;
     color: ${({ theme }) => theme.colors.black};
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #eee;
     &:last-child {
         border-bottom: none;
@@ -53,7 +53,7 @@ const Container = styled.li`
 const StoreName = styled.h1`
     width: auto;
     font-size: ${({ theme }) => theme.sizes.m};
-    font-family: "OAGothic";
+    font-family: "OAGothic", sans-serif;
     font-weight: 500;
     text-align: left;
     line-height: 20px;
@@ -70,6 +70,7 @@ const Category = styled.div`
 
 const StoreCategory = styled(StoreName)`
     padding-bottom: 0;
+    font-family: "Pretendard", sans-serif;
     font-size: ${({ theme }) => theme.sizes.s};
     font-weight: 400;
 `;
