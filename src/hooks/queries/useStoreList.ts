@@ -1,5 +1,5 @@
 import { responseType } from "@_types/response";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { getStoreList } from "@apis/store";
 import { AxiosError, AxiosResponse } from "axios";
 
@@ -22,4 +22,39 @@ export const useStoreList = (
         },
         { enabled: false },
     );
+};
+
+export const useSLInfQuery = (q: string) => {
+    const { data, status, isFetching, fetchNextPage, hasNextPage } =
+        useInfiniteQuery<{
+            result: responseType;
+            nextPage: number;
+            currentPage: number;
+            maxPage: number;
+        }>(
+            ["ywc.storeList.infQuery", q],
+            async ({ pageParam = 1 }) => {
+                const request: AxiosResponse<responseType> = await getStoreList(
+                    q,
+                    String(pageParam),
+                    10,
+                    null,
+                );
+                return {
+                    currentPage: pageParam,
+                    result: request.data,
+                    nextPage: pageParam + 1,
+                    maxPage: Math.ceil(request.data.result.count / 10),
+                };
+            },
+            {
+                getNextPageParam: (lastPage) => {
+                    return lastPage.currentPage >= lastPage.maxPage
+                        ? undefined
+                        : lastPage.nextPage;
+                },
+            },
+        );
+
+    return { data, status, isFetching, fetchNextPage, hasNextPage };
 };
