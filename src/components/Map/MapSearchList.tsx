@@ -34,6 +34,9 @@ const Container = styled.ul<{ isVisible: boolean }>`
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     overflow-y: auto;
+    ::-webkit-scrollbar {
+        width: 0%;
+    }
 `;
 
 export default forwardRef(MapSearchList);

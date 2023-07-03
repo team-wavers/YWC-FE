@@ -139,6 +139,8 @@ const MapContainer = ({
             });
         }
         setHLMarker(storeData);
+        setIsVisible((prev) => !prev);
+        setInfo(storeData);
     };
 
     return (
