@@ -12,7 +12,6 @@ import { useSLInfQuery } from "@hooks/queries/useStoreList";
 import styled from "styled-components";
 import { ReactComponent as CenterIcon } from "@assets/icons/location-icon.svg";
 import { ReactComponent as HomeIcon } from "@assets/icons/home-icon.svg";
-import { ReactComponent as CloseIcon } from "@assets/icons/close-icon.svg";
 import { ReactComponent as RefreshIcon } from "@assets/icons/refresh-icon.svg";
 import useOverlapMarkers from "@hooks/useOverlapMarkers";
 import { useNavigate } from "react-router-dom";
@@ -57,7 +56,7 @@ const MapContainer = ({
     const mapRef = useRef<naver.maps.Map>(null);
     const inputRef = useRef<HTMLInputElement>(null);
     const targetRef = useRef<HTMLDivElement>(null);
-    const listRef = useRef<HTMLUListElement>(null);
+    const listRef = useRef<HTMLDivElement>(null);
     const nav = useNavigate();
     const [searchQuery, setSearchQuery] = useState<string>("");
     const { data, status, fetchNextPage, hasNextPage, refetch } =
@@ -139,6 +138,8 @@ const MapContainer = ({
             });
         }
         setHLMarker(storeData);
+        setIsVisible((prev) => !prev);
+        setInfo(storeData);
     };
 
     return (
@@ -286,12 +287,11 @@ const MapContainer = ({
                     {status === "loading" && !data ? (
                         <></>
                     ) : (
-                        <MapSearchList ref={listRef} isVisible={isVisible}>
-                            <CloseButton
-                                onClick={() => setIsVisible((prev) => !prev)}
-                            >
-                                <CloseIcon width="22" />
-                            </CloseButton>
+                        <MapSearchList
+                            onClick={() => setIsVisible((prev) => !prev)}
+                            ref={listRef}
+                            isVisible={isVisible}
+                        >
                             {data && data.pages[0].result.result.count <= 0 ? (
                                 <NoResult>검색 결과가 없습니다.</NoResult>
                             ) : (
@@ -430,17 +430,6 @@ const PlaceItem = styled.button`
     &:last-child {
         border-bottom: none;
     }
-`;
-
-const CloseButton = styled.button`
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    width: 30px;
-    height: 30px;
-    outline: none;
-    border: none;
-    background-color: transparent;
 `;
 
 const NoResult = styled.h1`
