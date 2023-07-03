@@ -1,25 +1,45 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import styled from "styled-components";
+import { ReactComponent as CloseIcon } from "@assets/icons/close-icon.svg";
 
 type SearchListPropTypes = {
     children: React.ReactNode;
     isVisible: boolean;
+    onClick: () => void;
 };
 
 const MapSearchList = (
-    { isVisible, children }: SearchListPropTypes,
-    ref: React.ForwardedRef<HTMLUListElement>,
+    { isVisible, children, onClick }: SearchListPropTypes,
+    ref: React.ForwardedRef<HTMLDivElement>,
 ) => {
     return (
         <Container ref={ref} isVisible={isVisible}>
-            {children}
+            <CloseButton onClick={onClick}>
+                <CloseIcon width="22" />
+            </CloseButton>
+            <ListContainer>{children}</ListContainer>
         </Container>
     );
 };
 
-const Container = styled.ul<{ isVisible: boolean }>`
+const Container = styled.div<{ isVisible: boolean }>`
     position: relative;
-    display: ${({ isVisible }) => (isVisible ? `flex` : `none`)};
+    display: ${({ isVisible }) => (isVisible ? `block` : `none`)};
+`;
+
+const CloseButton = styled.button`
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+`;
+
+const ListContainer = styled.ul`
+    display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%;
