@@ -13,12 +13,14 @@ type ButtonPropTypes = {
 };
 
 const FilteringItem = ({ city, children, selected }: FIPropTypes) => {
-    const [searchParms] = useSearchParams();
+    const [searchParams] = useSearchParams();
+    const [query, page] = [searchParams.get("q"), searchParams.get("page")];
     const nav = useNavigate();
-    const q = searchParms.get("q");
 
     const clickHandler = () => {
-        city ? nav(`?q=${q}&page=1&city=${city}`) : nav(`?q=${q}&page=1`);
+        city
+            ? nav(`?q=${query}&page=${page}&city=${city}`)
+            : nav(`?q=${query}&page=${page}`);
     };
 
     return (
