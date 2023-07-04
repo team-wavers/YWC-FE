@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSearchParams } from "react-router-dom";
 import { useStoreList } from "@hooks/queries/useStoreList";
@@ -14,31 +14,21 @@ import FilteringItem from "@/components/FilteringBox/FilteringItem";
 
 const SearchResult = () => {
     const [searchParams] = useSearchParams();
-    const [query, page] = [searchParams.get("q"), searchParams.get("page")];
-    const [city, setCity] = useState<string | null>(null);
+    const [query, page, city] = [
+        searchParams.get("q"),
+        searchParams.get("page"),
+        searchParams.get("city"),
+    ];
     const { status, data, refetch } = useStoreList(
         String(query),
         Number(page),
         5,
-        city,
+        city || null,
     );
 
     useEffect(() => {
         refetch();
     }, [query, page, city]);
-
-    useEffect(() => {
-        const c = searchParams.get("city");
-        if (c) {
-            setCity(c);
-        } else {
-            setCity(null);
-        }
-    }, [searchParams.get("city")]);
-
-    useEffect(() => {
-        setCity(null);
-    }, [query]);
 
     if (status === "loading") return Loading();
     return (

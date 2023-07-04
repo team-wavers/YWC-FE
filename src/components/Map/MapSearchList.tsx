@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import styled from "styled-components";
 import { ReactComponent as CloseIcon } from "@assets/icons/close-icon.svg";
 
