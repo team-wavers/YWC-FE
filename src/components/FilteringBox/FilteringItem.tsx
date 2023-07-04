@@ -14,7 +14,7 @@ type ButtonPropTypes = {
 
 const FilteringItem = ({ city, children, selected }: FIPropTypes) => {
     const [searchParams] = useSearchParams();
-    const [query, page] = [searchParams.get("q"), searchParams.get("page")];
+    const query = searchParams.get("q");
     const nav = useNavigate();
 
     const clickHandler = () => {
