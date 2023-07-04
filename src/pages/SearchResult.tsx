@@ -28,8 +28,17 @@ const SearchResult = () => {
     }, [query, page, city]);
 
     useEffect(() => {
-        setCity(searchParams.get("city"));
+        const c = searchParams.get("city");
+        if (c) {
+            setCity(c);
+        } else {
+            setCity(null);
+        }
     }, [searchParams.get("city")]);
+
+    useEffect(() => {
+        setCity(null);
+    }, [query]);
 
     if (status === "loading") return Loading();
     return (

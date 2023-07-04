@@ -27,7 +27,11 @@ const Pagination = ({ total, limit, maxPage }: PaginationPropsType) => {
 
     const pageHandler = (page: number | null) => {
         page !== null &&
-            setParams({ q: String(params.get("q")), page: String(page) });
+            setParams({
+                q: String(params.get("q")),
+                page: String(page),
+                city: String(params.get("city")) || "",
+            });
     };
 
     return (
