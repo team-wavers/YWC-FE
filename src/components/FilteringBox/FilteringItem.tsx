@@ -19,8 +19,8 @@ const FilteringItem = ({ city, children, selected }: FIPropTypes) => {
 
     const clickHandler = () => {
         city
-            ? nav(`?q=${query}&page=${page}&city=${city}`)
-            : nav(`?q=${query}&page=${page}`);
+            ? nav(`?q=${query}&page=1&city=${city}`)
+            : nav(`?q=${query}&page=1`);
     };
 
     return (
