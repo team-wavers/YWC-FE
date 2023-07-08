@@ -17,6 +17,7 @@ const FilteringContainer = styled.div`
     text-align: center;
     display: inline-block;
     background: ${({ theme }) => theme.colors.bg};
+    margin: 10px 0;
     margin-right: 10px;
     padding: 5px 0;
     max-width: 100%;
