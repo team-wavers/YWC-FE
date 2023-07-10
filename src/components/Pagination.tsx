@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as ArrowLeft } from "@assets/icons/arrow-left.svg";
 import { ReactComponent as ArrowRight } from "@assets/icons/arrow-right.svg";
 import usePagination from "@hooks/usePagination";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 type PaginationPropsType = {
     total: number;
@@ -17,21 +17,30 @@ type PageButtonPropsType = {
 
 const Pagination = ({ total, limit, maxPage }: PaginationPropsType) => {
     if (total < limit) return <></>;
-    const [params, setParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
+    const [query, page, city] = [
+        searchParams.get("q"),
+        searchParams.get("page"),
+        searchParams.get("city"),
+    ];
+    const nav = useNavigate();
     const { prevPage, nextPage, pageRange, totalPages } = usePagination(
         total,
         limit,
         maxPage,
-        Number(params.get("page")),
+        Number(page),
     );
 
     const pageHandler = (page: number | null) => {
         page !== null &&
-            setParams({
-                q: String(params.get("q")),
-                page: String(page),
-                city: String(params.get("city")) || "",
-            });
+        // setParams({
+        //     q: String(params.get("q")),
+        //     page: String(page),
+        //     city: params.get("city") || "",
+        // });
+        city
+            ? nav(`?q=${query}&page=${page}&city=${city}`)
+            : nav(`?q=${query}&page=${page}`);
     };
 
     return (
@@ -51,7 +60,7 @@ const Pagination = ({ total, limit, maxPage }: PaginationPropsType) => {
                         <PageButton
                             onClick={() => pageHandler(i)}
                             key={i}
-                            activated={Number(params.get("page")) === i}
+                            activated={Number(page) === i}
                         >
                             {i}
                         </PageButton>
