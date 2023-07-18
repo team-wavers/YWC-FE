@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import IntroductionItem from "./IntroductionItem";
 import { Link } from "react-router-dom";
 import TechStack from "./TechStack";
+import Developers from "./Developers";
 
 const IntroductionBox = () => {
     return (
@@ -20,7 +20,7 @@ const IntroductionBox = () => {
             <TableBodyContainer>
                 <TableBodyCell>
                     <SubTitle>👥 참여 개발자</SubTitle>
-                    <IntroductionItem />
+                    <Developers />
                 </TableBodyCell>
             </TableBodyContainer>
             <TableBodyContainer>
@@ -45,7 +45,7 @@ const IntroductionBox = () => {
             </TableBodyContainer>
             <TableBodyContainer>
                 <TableBodyCell>
-                    <SubTitle>Contract</SubTitle>
+                    <SubTitle>📞 Contact</SubTitle>
                     <Link
                         to="#"
                         style={{ color: "#ff3399", fontSize: "inherit" }}
@@ -77,7 +77,7 @@ const SubTitle = styled.h3`
     text-align: left;
     font-family: "OAGothic", sans-serif;
     font-weight: 500;
-    font-size: ${({ theme }) => theme.sizes.l};
+    font-size: 20px;
 `;
 
 const TableBodyContainer = styled.div`

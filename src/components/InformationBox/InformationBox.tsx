@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Table from "./Table";
 import { ReactComponent as MapIcon } from "@assets/icons/map-search-icon.svg";
 import { Link } from "react-router-dom";
-import Introduct from "./Introduct";
+import Introduction from "./Introduction";
 
 const InformationBox = () => {
     return (
@@ -15,7 +15,7 @@ const InformationBox = () => {
                 </MapButton>
             </Link>
             <Table />
-            <Introduct />
+            <Introduction />
         </Container>
     );
 };

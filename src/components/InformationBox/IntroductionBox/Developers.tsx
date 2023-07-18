@@ -1,13 +1,24 @@
 import React from "react";
+import styled from "styled-components";
+import 조용원 from "@assets/pictures/조용원.png";
+import 이혜인 from "@assets/pictures/이혜인.png";
+import 강태양 from "@assets/pictures/강태양.png";
+import 홍은성 from "@assets/pictures/홍은성.png";
+import 정다운 from "@assets/pictures/정다운.png";
+import 조형근 from "@assets/pictures/조형근.png";
 
-const IntroductionItem = () => {
+const Developers = () => {
     return (
         <div>
-            <table>
+            <table cellPadding="0" cellSpacing="0">
                 <tbody>
                     <tr>
                         <td
-                            style={{ fontSize: 18, fontWeight: 700 }}
+                            style={{
+                                fontSize: 18,
+                                fontWeight: 700,
+                                paddingTop: 20,
+                            }}
                             align="center"
                             colSpan={3}
                         >
@@ -16,22 +27,13 @@ const IntroductionItem = () => {
                     </tr>
                     <tr>
                         <td>
-                            <img
-                                src="https://github.com/team-culfare/.resources/blob/main/%EC%A1%B0%EC%9A%A9%EC%9B%90.png?raw=true"
-                                width={140}
-                            />
+                            <Img src={조용원} />
                         </td>
                         <td>
-                            <img
-                                src="https://github.com/team-culfare/.resources/blob/main/%EC%9D%B4%ED%98%9C%EC%9D%B8.png?raw=true"
-                                width={140}
-                            />
+                            <Img src={이혜인} />
                         </td>
                         <td>
-                            <img
-                                src="https://github.com/team-culfare/.resources/blob/main/%EA%B0%95%ED%83%9C%EC%96%91.jpg?raw=true"
-                                width={140}
-                            />
+                            <Img src={강태양} />
                         </td>
                     </tr>
                     <tr>
@@ -89,7 +91,11 @@ const IntroductionItem = () => {
                 <tbody>
                     <tr>
                         <td
-                            style={{ fontSize: 18, fontWeight: 700 }}
+                            style={{
+                                fontSize: 18,
+                                fontWeight: 700,
+                                paddingTop: 20,
+                            }}
                             align="center"
                             colSpan={3}
                         >
@@ -98,22 +104,13 @@ const IntroductionItem = () => {
                     </tr>
                     <tr>
                         <td>
-                            <img
-                                src="https://github.com/team-culfare/.resources/blob/main/%ED%99%8D%EC%9D%80%EC%84%B1.png?raw=true"
-                                width={140}
-                            />
+                            <Img src={홍은성} />
                         </td>
                         <td>
-                            <img
-                                src="https://github.com/team-culfare/.resources/blob/main/%EC%A0%95%EB%8B%A4%EC%9A%B4.jpeg?raw=true"
-                                width={140}
-                            />
+                            <Img src={정다운} />
                         </td>
                         <td>
-                            <img
-                                src="https://github.com/team-culfare/.resources/blob/main/%EC%A1%B0%ED%98%95%EA%B7%BC.jpeg?raw=true"
-                                width={140}
-                            />
+                            <Img src={조형근} />
                         </td>
                     </tr>
                     <tr>
@@ -167,5 +164,8 @@ const IntroductionItem = () => {
         </div>
     );
 };
+const Img = styled.img`
+    width: 100%;
+`;
 
-export default IntroductionItem;
+export default Developers;

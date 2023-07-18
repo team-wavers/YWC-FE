@@ -3,7 +3,7 @@ import styled from "styled-components";
 import IntroductionBox from "./IntroductionBox/IntroductionBox";
 import { Link } from "react-router-dom";
 
-const Introduct = () => {
+const Introduction = () => {
     return (
         <>
             <Container>
@@ -48,4 +48,4 @@ const SubTitle = styled.h4`
     line-height: ${({ theme }) => theme.sizes.l};
 `;
 
-export default Introduct;
+export default Introduction;
