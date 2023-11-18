@@ -12,6 +12,7 @@ import Layout from "./Layout";
 import { HelmetProvider } from "react-helmet-async";
 import { NavermapsProvider } from "react-naver-maps";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ChatBot from "@pages/ChatBot";
 
 const qClient = new QueryClient({
     defaultOptions: {
@@ -49,6 +50,7 @@ const Router = () => {
                                     <Route path="*" element={<NotFound />} />
                                 </Route>
                                 <Route path="/map" element={<Map />} />
+                                <Route path="/chatbot" element={<ChatBot />} />
                             </Routes>
                         </HelmetProvider>
                     </NavermapsProvider>
