@@ -8,7 +8,7 @@ const ChatHeader = () => {
     const nav = useNavigate();
     return (
         <Container>
-            <BackHomeButton onClick={() => nav("/")}>
+            <BackHomeButton onClick={() => nav(-1)}>
                 <ArrowLeft fill="#ddd" width={20} height={20} />
             </BackHomeButton>
             <ProfileImage src={RobotImage} />
