@@ -8,6 +8,7 @@ import { ChatDataType, ChatResponseType } from "@/types/chatbot";
 import { AxiosResponse } from "axios";
 import ChatHeader from "@/components/ChatBot/ChatHeader";
 import { ChatbotMessages } from "@/constants/chatbot";
+import Pending from "@/components/Pending";
 
 const ChatBot = () => {
     const [response, setResponse] = useState<ChatDataType[] | null>(null);
@@ -79,6 +80,11 @@ const ChatBot = () => {
                             {e.message ? e.message : CHATBOT_NO_REPLY}
                         </Bubble>
                     ))}
+                {pending && (
+                    <Bubble type="receive">
+                        <Pending />
+                    </Bubble>
+                )}
             </ChatContainer>
             <InputContainer
                 onSubmit={(e: React.SyntheticEvent) => {
@@ -105,7 +111,6 @@ const Container = styled.div`
 const ChatContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 10px;
     width: 100%;
     height: calc(100vh - 70px);
     overflow-y: scroll;
@@ -116,12 +121,12 @@ const ChatContainer = styled.div`
 `;
 
 const InputContainer = styled.form`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 100%;
+    width: min(480px, 100%);
     height: 70px;
     border-top: 1px solid rgba(235, 235, 235, 1);
     background-color: ${({ theme }) => theme.colors.white};
