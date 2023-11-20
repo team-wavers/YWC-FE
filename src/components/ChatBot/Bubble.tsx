@@ -4,21 +4,26 @@ import styled from "styled-components";
 type Props = {
     type: "send" | "receive";
     children: React.ReactNode;
-    timestamp: number;
+    timestamp?: number;
 };
 
 const Bubble = ({ type, children, timestamp }: Props) => {
-    const date = new Date(timestamp);
+    const date = new Date(timestamp || 0);
     return (
         <Container type={type}>
             <BubbleContainer type={type}>{children}</BubbleContainer>
-            <Time>
-                {date.getHours() < 12 ? `오전 ` : `오후 `}
-                {date.getHours() > 12 ? date.getHours() % 12 : date.getHours()}:
-                {date.getMinutes() < 10
-                    ? `0${date.getMinutes()}`
-                    : date.getMinutes()}
-            </Time>
+            {timestamp && (
+                <Time>
+                    {date.getHours() < 12 ? `오전 ` : `오후 `}
+                    {date.getHours() > 12
+                        ? date.getHours() % 12
+                        : date.getHours()}
+                    :
+                    {date.getMinutes() < 10
+                        ? `0${date.getMinutes()}`
+                        : date.getMinutes()}
+                </Time>
+            )}
         </Container>
     );
 };
