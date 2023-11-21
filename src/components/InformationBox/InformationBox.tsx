@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Feedback from "./Feedback";
 import Table from "./Table";
 import { ReactComponent as MapIcon } from "@assets/icons/map-search-icon.svg";
 import { Link } from "react-router-dom";
+import Introduction from "./Introduction";
 
 const InformationBox = () => {
     return (
@@ -15,7 +15,7 @@ const InformationBox = () => {
                 </MapButton>
             </Link>
             <Table />
-            <Feedback />
+            <Introduction />
         </Container>
     );
 };

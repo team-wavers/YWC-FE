@@ -5,11 +5,13 @@ import Footer from "@components/Footer";
 import ShareModal from "@components/Share/ShareModal";
 import ShareButton from "@components/Share/ShareButton";
 import SearchContainer from "@components/Search/SearchContainer";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import useModal from "@hooks/useModal";
+import ChatbotButton from "@components/ChatBot/ChatbotButton ";
 
 const Layout = () => {
     const { isOpen, setIsOpen, modalRef } = useModal();
+    const nav = useNavigate();
     return (
         <Container>
             <Header />
@@ -18,7 +20,10 @@ const Layout = () => {
                 <Outlet />
             </Main>
             {!isOpen && (
-                <ShareButton onClick={() => setIsOpen((prev) => !prev)} />
+                <>
+                    <ShareButton onClick={() => setIsOpen((prev) => !prev)} />
+                    <ChatbotButton onClick={() => nav("/chatbot")} />
+                </>
             )}
             <ShareModal
                 closeBtnHandler={() => setIsOpen((prev) => !prev)}

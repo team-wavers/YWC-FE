@@ -14,8 +14,9 @@ const Table = () => {
                     <TableBodyContainer>
                         <TableBodyCell>문화, 여가</TableBodyCell>
                         <TableBodyCell>
-                            공연 관람: 연극, 영화, 공연 전시: 미술관, 박물관,
-                            비엔날레, 화랑
+                            공연 관람: 연극, 영화, 공연
+                            <br />
+                            전시: 미술관, 박물관, 비엔날레, 화랑
                             <br />
                             사진관
                             <br />
